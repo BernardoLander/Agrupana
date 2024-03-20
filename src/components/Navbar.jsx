@@ -1,15 +1,17 @@
-import React, {useEffect} from 'react'
-import {Link , useNavigate} from 'react-router-dom'
-
-
+import React from 'react'
+import {Link } from 'react-router-dom'
+import styles from "../components/Navbar.module.css"
+import Logo from '../images/Logo.jpg'
 
 const Navbar = () => {
   
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div className="container-fluid">
-          {/* si queremos poner una imagen tipo logo seria aca*/}
+      <nav className="navbar navbar-expand-lg " >
+        <div className={styles.navbar}>
+          <a className="navbar-brand" href="#">
+            <img src={Logo}  width="100" height="50" className="d-inline-block align-text-top"/>
+          </a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
