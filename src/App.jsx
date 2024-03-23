@@ -1,34 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React , { useState, useContext } from 'react'
+import { useUser } from './context/Usuariocontext'
+import { Navigate, useNavigate } from 'react-router-dom'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const {user,setUser} = useUser()
+  const navigate = useNavigate()
+
+  function cambiarnombre(){
+    console.log("mi nombre es", user )
+    navigate('/Login', { replace: true })
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <form >
+      <input type="text" placeholder='ingrese nuevo nombre' value={user} onChange={(e) => setUser(e.target.value)} />
+      <button type="button" onClick={cambiarnombre}>cambio</button>
+      <p>{user}</p>
+      </form>
+    </div>
   )
 }
 
