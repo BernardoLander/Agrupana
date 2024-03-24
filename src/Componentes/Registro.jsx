@@ -8,7 +8,20 @@ const Registro = () => {
   const [password,setPassword] = useState('')
   const estudiante = "@correo.unimet.edu.ve"
   const admin = "@unimet.edu.ve" 
+
   async function ValidarCorreo(){
+    if(typeof nombre !=='string' || nombre.trim() === '' || !/^[a-zA-Z\s]*$/.test(nombre)){
+      alert("el nombre no es valido")
+      return
+    }
+    if (typeof apellido !=='string' || apellido.trim() ==='' || !/^[a-zA-Z\s]*$/.test(apellido)){
+      alert("el apellido no es valido")
+      return
+    }
+    if(password.length<8){
+      alert('la contraseña tiene que ser de 8 o mas caracteres')
+      return
+    }
     switch (true) {
       case correo.includes(estudiante):
         console.log("el correo es de estudiante")
@@ -16,8 +29,8 @@ const Registro = () => {
 
         break;
       case correo.includes(admin):
-        console.log("el correo es de admin")      
-         break;
+        console.log("el correo es de admin")
+        break;
       default:
         console.log("el correo no pertenece a la universidad")        
         break;
