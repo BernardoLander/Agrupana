@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { crearUsuario } from '../Controllers/Usuario'
+import { collection , query, where, getDocs } from "firebase/firestore";
+import { auth , db } from "../firebase";
 
 const Registro = () => {
   const [nombre, setNombre] = useState('')
@@ -10,11 +12,18 @@ const Registro = () => {
   const admin = "@unimet.edu.ve" 
 
   async function ValidarCorreo(){
-    if(typeof nombre !=='string' || nombre.trim() === '' || !/^[a-zA-Z\s]*$/.test(nombre)){
+    const usuarioRef = collection(db, 'Usuarios')
+    const q = query(usuarioRef , where('correo','==',correo))
+    const querySnapshot = await getDocs(q)
+    if(!querySnapshot.empty){
+      alert('El correo ya esta registrado')
+      return
+    }
+    if(typeof nombre !=='string' || nombre.trim() === '' || !/^[a-zA-Z\s]*$/.test(nombre) || nombre.length<=2  ){
       alert("el nombre no es valido")
       return
     }
-    if (typeof apellido !=='string' || apellido.trim() ==='' || !/^[a-zA-Z\s]*$/.test(apellido)){
+    if (typeof apellido !=='string' || apellido.trim() ==='' || !/^[a-zA-Z\s]*$/.test(apellido) || apellido.length<=2 ){
       alert("el apellido no es valido")
       return
     }
