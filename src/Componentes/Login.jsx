@@ -16,22 +16,7 @@ const Login = () => {
   
   async function Ingresar(){
     logearAuth(correo, password)
-    // const userRef = collection(db, 'Usuarios')
-    // const q =query (userRef, where('correo','==', correo))
-    // const querySnapshot = await getDocs (q)
-    //   if(!querySnapshot.empty){
-    //     const user2 = querySnapshot.docs[0].data()
-    //     console.log('Usuario encontrado, nombre', user2.nombre)
-    //     console.log(user2.apellido)
-    //     console.log(user2.correo)
-    //     // setUser(user2)
-    //     // console.log('context')
-    //     // console.log('Usuario encontrado, nombre', user.nombre)
-    //     // console.log(user.apellido)
-    //     // console.log(user.correo)
-    //     setUser(user2)
 
-    //   }
   }
 
   return (

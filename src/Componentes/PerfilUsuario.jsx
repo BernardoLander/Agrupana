@@ -17,9 +17,6 @@ const PerfilUsuario = () => {
     const querySnapshot = await getDocs (q)
     if(!querySnapshot.empty){
       const user2 = querySnapshot.docs[0].data()
-      // console.log('Usuario encontrado en el componente perfil, nombre', user2.nombre)
-      // console.log(user2.apellido)
-      // console.log(user2.correo)
       setUser(user2)
       setIsLoadingUser(false)
     }
