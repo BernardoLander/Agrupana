@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { crearUsuario } from '../Controllers/Usuario'
+import { crearUsuario , registrarAuth } from '../Controllers/Usuario'
 import { collection , query, where, getDocs } from "firebase/firestore";
 import { auth , db } from "../firebase";
+
 
 const Registro = () => {
   const [nombre, setNombre] = useState('')
@@ -35,6 +36,7 @@ const Registro = () => {
       case correo.includes(estudiante):
         console.log("el correo es de estudiante")
         await crearUsuario({nombre , apellido , correo , password})
+        await registrarAuth(correo, password)
 
         break;
       case correo.includes(admin):
@@ -48,11 +50,12 @@ const Registro = () => {
   return (
     <div style={{border:'3px'}}>
       <form>
-        <input type="text" placeholder='Ingresa tu nombre' value={nombre} onChange={(e)=>setNombre(e.target.value)}/>
-        <input type="text" placeholder='Ingresa tu apellido'value={apellido}  onChange={(e)=>setApellido(e.target.value)}/>
-        <input type="text" placeholder='Ingresa tu correo' value={correo} onChange={(e)=> setCorreo(e.target.value)}/>
+        <input type="text" placeholder='Ingresa tu nombre' value={nombre} onChange={(e)=>setNombre(e.target.value.toLowerCase())}/>
+        <input type="text" placeholder='Ingresa tu apellido'value={apellido}  onChange={(e)=>setApellido(e.target.value.toLowerCase())}/>
+        <input type="text" placeholder='Ingresa tu correo' value={correo} onChange={(e)=> setCorreo(e.target.value.toLowerCase())}/>
         <input type="password" placeholder='Ingresa tu contraseña'value={password} onChange={(e)=> setPassword(e.target.value)}/>
         <button type='button' onClick={ValidarCorreo}>ingresar</button>
+        
       </form>
     </div>
   )
