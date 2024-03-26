@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
+import Carousel from '../components/Carousel'
 
 const GroupPage = () => {
   return (
@@ -8,6 +9,8 @@ const GroupPage = () => {
             <Navbar/>
         </div>
         <h1>Agrupaciones Estudiantiles</h1>
+
+        <Carousel/>
     </div>
   )
 }
