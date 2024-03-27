@@ -1,0 +1,69 @@
+.headline {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    position: relative;
+    letter-spacing: normal;
+    gap: 20px;
+    text-align: left;
+    font-size: 15px;
+    color: black;
+    font-family: roboto Condensed;
+
+  }
+
+
+  .inicio {
+    font-weight: 500;
+    min-width: 33px;
+  }
+  .inicioWrapper {
+    
+    justify-content: flex-start;
+    padding: 0;
+  }
+  .agrupacionesEstudiantiles {
+    font-weight: 500;
+    z-index: 1;
+  }
+  
+  .agrupacionesEstudiantilesWrapper {
+   
+    padding: 0;
+  }
+  
+  .logoAgrupana1 {
+    height: 50px;
+    width: 100px;
+    margin: 0 ;
+    top: 0;
+    bottom: 0;
+    left: 62px;
+    border-radius: 50px;
+    max-height: 100%;
+    object-fit: cover;
+    z-index: 2;
+  }
+
+  .registrate {
+    font-size: 15px;
+    font-weight: 500;
+    font-family: roboto Condensed;
+    color: #f6f6f6;
+    text-align: left;
+    display: inline-block;
+    min-width: 62px;
+  }
+  .registrateWrapper {
+    border: 0;
+    background-color: #ff8200;
+    z-index: 1;
+  }
+  .regstrateWrapper:hover {
+    background-color: #e66900;
+  }
