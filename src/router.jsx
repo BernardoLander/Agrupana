@@ -1,27 +1,34 @@
-import {createBrowserRouter} from 'react-router-dom';
-import HomePage from './pages/HomePage';
+import {createBrowserRouter} from 'react-router-dom'
+import Login from './pages/Login'
+import Registro from './pages/Registro'
 import GroupPage from './pages/GroupPage';
-import Login from './pages/Login';
-import SignUp from './pages/SignUp';
+import PerfilUsuario from './pages/PerfilUsuario';
+import HomePage from './pages/HomePage';
 
 export const router = createBrowserRouter([
 
     {
-        path: '/',
-        element: <HomePage/>
+        path: '/login',
+        element: <Login/> 
+    },
+    {
+        path: '/registro',
+        element: <Registro/>
+    },
+
+    {
+        path:'/',
+        element:<HomePage/>
 
     },
     {
-        path: '/agrupaciones',
+        path:'/perfil',
+        element:<PerfilUsuario/>
+
+    },
+    {
+        path:'/agrupaciones',
         element: <GroupPage/>
-    },
-    {
-        path: '/inicio_sesion',
-        element: <Login/>
-    },
-    {
-        path: '/registrarse',
-        element: <SignUp/>
-    },
-
+    }
+//falta home
 ])

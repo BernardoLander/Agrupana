@@ -32,12 +32,12 @@ const Navbar = () => {
               </div>
 
               <li className="nav-item">
-                <Link className="nav-link" to='/inicio_sesion'>Iniciar Sesión</Link>
+                <Link className="nav-link" to='/login'>Iniciar Sesión</Link>
               </li>
               
               <div className = {styles.registrateWrapper}>
                 <li className={styles.registrate}>
-                <Link className="nav-link" to='/registrarse'>Regístrate</Link>
+                <Link className="nav-link" to='/registro'>Regístrate</Link>
                 </li>
               </div>
               

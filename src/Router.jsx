@@ -1,8 +1,9 @@
 import {createBrowserRouter} from 'react-router-dom'
-import Login from './Componentes/Login'
-import Registro from './Componentes/Registro'
-import App from "./App";
-import PerfilUsuario from './Componentes/PerfilUsuario';
+import Login from './pages/Login'
+import Registro from './pages/Registro'
+import GroupPage from './pages/GroupPage';
+import PerfilUsuario from './pages/PerfilUsuario';
+import HomePage from './pages/HomePage';
 
 export const router = createBrowserRouter([
 
@@ -17,13 +18,17 @@ export const router = createBrowserRouter([
 
     {
         path:'/',
-        element:<App/>
+        element:<HomePage/>
 
     },
     {
         path:'/perfil',
         element:<PerfilUsuario/>
 
+    },
+    {
+        path:'/agrupaciones',
+        element: <GroupPage/>
     }
-
+//falta home
 ])
