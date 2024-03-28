@@ -5,7 +5,7 @@ import { collection, query, where, getDocs } from 'firebase/firestore'
 import { auth , db } from "../firebase";
 import { useEffect } from 'react';
 import { Navigate, useNavigate , Link ,  } from 'react-router-dom'
-import { crearUsuario, logearAuth, signInGoogle, logOut} from "../Controllers/Usuario";
+import { crearUsuario, logearAuth, signInGoogle, logOut , signInFacebook} from "../Controllers/Usuario";
 
 
 
@@ -31,6 +31,9 @@ const Login = () => {
     await signInGoogle()
     
   }
+  async function IniciarFacebook(){
+    await signInFacebook()
+  }
 
   return (
     <div>
@@ -42,6 +45,7 @@ const Login = () => {
         <button type='button' onClick={IniciarGoogle}>Inicia sesion con google</button>
       </form>
       <button type='button' onClick={logOut}>Cerra sesion</button>    
+      <button type='button' onClick={IniciarFacebook}>Inicia sesion con facebook</button>
     </div>
   )
 }

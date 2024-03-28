@@ -1,6 +1,6 @@
 import { collection,addDoc , query, where, getDocs } from "firebase/firestore";
 import { auth, db } from "../firebase";
-import { signOut , createUserWithEmailAndPassword , signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup , deleteUser} from "firebase/auth";
+import { signOut , createUserWithEmailAndPassword , signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup , deleteUser, FacebookAuthProvider} from "firebase/auth";
 import { useUser } from "../context/Usuariocontext";
 
 
@@ -89,4 +89,20 @@ export const signInGoogle = async () => {
     } catch (error) {
       console.log('Error', error);
     }
-  };
+};
+
+export const signInFacebook = async ()=>{
+    const responseFacebook = new FacebookAuthProvider()
+    // responseFacebook.getCustomParameters({hd: '@correo.unimet.edu.ve'})
+    await signInWithPopup(auth ,responseFacebook)
+        .then(result => {
+            console.log (result)
+            console.log('iniciando con facebook')
+
+        })
+        .catch(err => {
+            console.log(err)
+        })
+
+}
+
