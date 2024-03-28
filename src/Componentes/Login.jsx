@@ -5,7 +5,7 @@ import { collection, query, where, getDocs } from 'firebase/firestore'
 import { auth , db } from "../firebase";
 import { useEffect } from 'react';
 import { Navigate, useNavigate , Link ,  } from 'react-router-dom'
-import { logearAuth} from "../Controllers/Usuario";
+import { crearUsuario, logearAuth, signInGoogle, logOut} from "../Controllers/Usuario";
 
 
 
@@ -15,8 +15,27 @@ const Login = () => {
   const [password , setPasword] = useState('')
   
   async function Ingresar(){
-    logearAuth(correo, password)
-
+    if (typeof correo !=='string' || correo.trim()==='' || /\s/.test(correo)) {
+      alert("Ingrese un correo valido")
+      return
+    }
+    if (password.length<8 || /\s/.test(password)) {
+      alert('La contraseña tiene que ser de 8 o mas caracteres y no debe contener espacios')
+      return
+    }
+    else{
+      logearAuth(correo, password)
+    }
+  }
+  async function IniciarGoogle() {
+    await signInGoogle()
+    // const nombre = user.displayName
+    // console.log(nombre)
+    // const correo = user.email 
+    // const apellido = user.displayName
+    // const password = user.displayName
+    // crearUsuario(nombre, apellido, correo, password)
+    
   }
 
   return (
@@ -26,7 +45,9 @@ const Login = () => {
         <input type="password" placeholder='Ingrese la contaseña' value={password} onChange={(e)=>setPasword(e.target.value.toLowerCase())}/>
         <button type='button' onClick={Ingresar} to='/pefil'>Ingresar</button>
         <Link to='/perfil'>perfil</Link>
+        <button type='button' onClick={IniciarGoogle}>Inicia sesion con google</button>
       </form>
+      <button type='button' onClick={logOut}>Cerra sesion</button>    
     </div>
   )
 }

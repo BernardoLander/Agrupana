@@ -7,12 +7,10 @@ export const useUser =()=> useContext(UserContext)
 
 export function UserContextProvider({children}){
     const [user , setUser] = useState('')
-    console.log(user,"hola")
 
     useEffect(()=>{
         onAuthStateChanged(auth, (user)=>{
             console.log(user!==null ? 'Usuario loggeado':'Usuario no loggeado')
-            // console.log(user.email ,'hola desde el onauthchan')
             setUser(user)
         });
     },[])

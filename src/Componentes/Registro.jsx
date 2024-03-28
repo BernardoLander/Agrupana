@@ -20,16 +20,20 @@ const Registro = () => {
       alert('El correo ya esta registrado')
       return
     }
+    if (typeof correo !=='string' || correo.trim()==='' || /\s/.test(correo)) {
+      alert("Ingrese un correo valido")
+      return
+    }
     if(typeof nombre !=='string' || nombre.trim() === '' || !/^[a-zA-Z\s]*$/.test(nombre) || nombre.length<=2  ){
-      alert("el nombre no es valido")
+      alert("El nombre no es valido")
       return
     }
     if (typeof apellido !=='string' || apellido.trim() ==='' || !/^[a-zA-Z\s]*$/.test(apellido) || apellido.length<=2 ){
-      alert("el apellido no es valido")
+      alert("El apellido no es valido")
       return
     }
-    if(password.length<8){
-      alert('la contraseña tiene que ser de 8 o mas caracteres')
+    if(password.length<8 || /\s/.test(password)){
+      alert('La contraseña tiene que ser de 8 o mas caracteres y no debe contener espacios')
       return
     }
     switch (true) {
@@ -37,7 +41,6 @@ const Registro = () => {
         console.log("el correo es de estudiante")
         await crearUsuario({nombre , apellido , correo , password})
         await registrarAuth(correo, password)
-
         break;
       case correo.includes(admin):
         console.log("el correo es de admin")
