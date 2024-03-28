@@ -29,12 +29,6 @@ const Login = () => {
   }
   async function IniciarGoogle() {
     await signInGoogle()
-    // const nombre = user.displayName
-    // console.log(nombre)
-    // const correo = user.email 
-    // const apellido = user.displayName
-    // const password = user.displayName
-    // crearUsuario(nombre, apellido, correo, password)
     
   }
 
