@@ -39,7 +39,7 @@ const Login = () => {
     <div>
       <form >
         <input type="text" placeholder='Ingrese el correo' value={correo} onChange={(e)=>setCorreo(e.target.value.toLowerCase())}/>
-        <input type="password" placeholder='Ingrese la contaseña' value={password} onChange={(e)=>setPasword(e.target.value.toLowerCase())}/>
+        <input type="password" placeholder='Ingrese la contaseña' value={password} onChange={(e)=>setPasword(e.target.value)}/>
         <button type='button' onClick={Ingresar} to='/pefil'>Ingresar</button>
         <Link to='/perfil'>perfil</Link>
         <button type='button' onClick={IniciarGoogle}>Inicia sesion con google</button>
