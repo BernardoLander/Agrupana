@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { crearUsuario , registrarAuth } from '../controllers/Usuario'
+import { crearUsuario , registrarAuth } from '../Controllers/Usuario'
 import { collection , query, where, getDocs } from "firebase/firestore";
 import { auth , db } from "../firebase";
 

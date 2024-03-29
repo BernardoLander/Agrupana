@@ -1,8 +1,8 @@
 import { useEffect, useState} from 'react'
 import Navbar from '../components/Navbar'
 import {Link} from 'react-router-dom'
-import {getClasifiacion} from '../controllers/Agrupacion'
-import {getAgrupacionesbyId} from '../controllers/Agrupacion'
+import {getClasifiacion} from '../Controllers/Agrupacion'
+import {getAgrupacionesbyId} from '../Controllers/Agrupacion'
 
 
 const GroupPage = () => {

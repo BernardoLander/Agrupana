@@ -5,7 +5,7 @@ import { collection, query, where, getDocs } from 'firebase/firestore'
 import { auth , db } from "../firebase";
 import { useEffect } from 'react';
 import { Navigate, useNavigate , Link ,  } from 'react-router-dom'
-import { logearAuth} from "../controllers/Usuario";
+import { logearAuth} from "../Controllers/Usuario";
 
 
 
