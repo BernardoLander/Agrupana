@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getClasifiacion } from "../controllers/Agrupacion";
+import { getClasifiacion } from "../Controllers/Agrupacion";
 
 export function UseClasificacion(){
     const [category, setCategory]= useState(null);

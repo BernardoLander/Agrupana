@@ -2,7 +2,7 @@ import React , { useState, useContext } from 'react'
 import { useUser } from './context/Usuariocontext'
 import { Navigate, useNavigate } from 'react-router-dom'
 import './App.css'
-import { logOut } from './controllers/Usuario'
+import { logOut } from './Controllers/Usuario'
 
 function App() {
 
