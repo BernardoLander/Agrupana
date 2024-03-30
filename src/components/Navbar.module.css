@@ -23,7 +23,7 @@
     min-width: 33px;
   }
   .inicioWrapper {
-    
+
     justify-content: flex-start;
     padding: 0;
   }
@@ -31,12 +31,12 @@
     font-weight: 500;
     z-index: 1;
   }
-  
+
   .agrupacionesEstudiantilesWrapper {
-   
+
     padding: 0;
   }
-  
+
   .logoAgrupana1 {
     height: 50px;
     width: 100px;

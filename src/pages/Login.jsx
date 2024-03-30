@@ -1,53 +1,81 @@
-import React from 'react'
-import { useUser } from '../context/Usuariocontext'
-import { useState } from 'react'
-import { collection, query, where, getDocs } from 'firebase/firestore'
-import { auth , db } from "../firebase";
-import { useEffect } from 'react';
-import { Navigate, useNavigate , Link ,  } from 'react-router-dom'
-import { crearUsuario, logearAuth, signInGoogle, logOut , signInFacebook} from "../Controllers/Usuario";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { getDoc, doc } from 'firebase/firestore';
+import './Login.module.css';
+import { auth, googleProvider, db, signInWithPopup } from '../firebase';
 
+function Login() {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const [loggedIn, setLoggedIn] = useState(false);
+    const navigate = useNavigate();
 
+    const handleLogin = async () => {
+        if (!username || !password) {
+            setError('Please fill in all fields.');
+            return;
+        }
 
-const Login = () => {
-  const {user,setUser} = useUser()
-  const [correo, setCorreo]= useState('')
-  const [password , setPasword] = useState('')
-  
-  async function Ingresar(){
-    if (typeof correo !=='string' || correo.trim()==='' || /\s/.test(correo)) {
-      alert("Ingrese un correo valido")
-      return
-    }
-    if (password.length<8 || /\s/.test(password)) {
-      alert('La contraseña tiene que ser de 8 o mas caracteres y no debe contener espacios')
-      return
-    }
-    else{
-      logearAuth(correo, password)
-    }
-  }
-  async function IniciarGoogle() {
-    await signInGoogle()
-    
-  }
-  async function IniciarFacebook(){
-    await signInFacebook()
-  }
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, username, password);
+            const userDoc = await getDoc(doc(db, 'users', userCredential.user.uid));
+            if (!userDoc.exists()) {
+                setError('User not found in Firestore.');
+                return;
+            }
 
-  return (
-    <div>
-      <form >
-        <input type="text" placeholder='Ingrese el correo' value={correo} onChange={(e)=>setCorreo(e.target.value.toLowerCase())}/>
-        <input type="password" placeholder='Ingrese la contaseña' value={password} onChange={(e)=>setPasword(e.target.value)}/>
-        <button type='button' onClick={Ingresar} to='/pefil'>Ingresar</button>
-        <Link to='/perfil'>perfil</Link>
-        <button type='button' onClick={IniciarGoogle}>Inicia sesion con google</button>
-      </form>
-      <button type='button' onClick={logOut}>Cerra sesion</button>    
-      <button type='button' onClick={IniciarFacebook}>Inicia sesion con facebook</button>
-    </div>
-  )
+            navigate('/Homepage');
+            setLoggedIn(true);
+        } catch (error) {
+            if (error.code === 'auth/user-not-found') {
+                setError('No user found with this email.');
+            } else if (error.code === 'auth/wrong-password') {
+                setError('Incorrect password.');
+            } else {
+                setError('Invalid credentials. Please try again.');
+            }
+        }
+    };
+
+    const handleGoogleSignIn = async () => {
+        try {
+            const result = await signInWithPopup(auth, googleProvider);
+            const user = result.user;
+            const userDoc = await getDoc(doc(db, 'users', user.uid));
+            if (!userDoc.exists()) {
+                setError('User not found in Firestore.');
+                return;
+            }
+
+            navigate('/Homepage');
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    return (
+        <div className="login-container">
+            <h2>Iniciar sesión</h2>
+            <input
+                type="text"
+                placeholder="Email"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
+                type="password"
+                placeholder="Contraseña"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
+            <button onClick={handleLogin}>Iniciar sesión</button>
+            <button onClick={handleGoogleSignIn}>Iniciar sesión con Google</button>
+            {error && <p className="error-message">{error}</p>}
+            {loggedIn && <p className="success-message">¡Has iniciado sesión correctamente!</p>}
+        </div>
+    );
 }
 
-export default Login
+export default Login;
