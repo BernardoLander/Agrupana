@@ -1,0 +1,45 @@
+[
+    {
+        "id": '1'
+
+        'nombre' : 'Formula Sae',
+        
+        'mision' : 'Brindar al estudiante de la Universidad Metropolitana la oportunidad de participar en un proyecto que se basa en la creación de un modelo de empresa, cuyo objetivo es el diseño y construcción de un prototipo de carro de carreras de alto desempeño que compita anualmente en la competencia “Fórmula SAE”, representando a la Universidad Metropolitana y a Venezuela internacionalmente.'
+        
+        'vision' : 'Ofrecer profesionales reconocidos por su capacidad emprendedora, versatilidad, proactividad y habilidad en el área empresarial y técnica.'
+        
+        'somos' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque varius urna eu libero ultrices fermentum. Suspendisse convallis fermentum dolor, vitae bibendum metus lobortis semper. Nulla sit amet molestie metus. Sed tortor sem, vestibulum quis vulputate sit amet, egestas accumsan leo.'
+
+        'pertenecer' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque varius urna eu libero ultrices fermentum. Suspendisse convallis fermentum dolor, vitae bibendum metus lobortis semper. Nulla sit amet molestie metus. Sed tortor sem, vestibulum quis vulputate sit amet, egestas accumsan leo.'
+
+    },
+    {
+        'id':'2'
+        'nombre':'Metro Tech'
+        'mision': 'Fomentar e impartir cursos y realizar investigaciones sobre las diferentes áreas que puede tener la tecnología, tanto dentro de la misma agrupación como para los estudiantes de la Universidad en general.'
+        'vision': 'Organizar un equipo de estudiantes apasionados por la tecnología y por alguna de las áreas que ésta pueda abarcar. Enaltecer y honrar el nombre de la agrupación y de la universidad a nivel nacional e internacional, y facilitar las investigaciones y la realización de las mismas.'
+        'somos' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque varius urna eu libero ultrices fermentum. Suspendisse convallis fermentum dolor, vitae bibendum metus lobortis semper. Nulla sit amet molestie metus. Sed tortor sem, vestibulum quis vulputate sit amet, egestas accumsan leo.'
+
+        'Pertenecer': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque varius urna eu libero ultrices fermentum. Suspendisse convallis fermentum dolor, vitae bibendum metus lobortis semper. Nulla sit amet molestie metus. Sed tortor sem, vestibulum quis vulputate sit amet, egestas accumsan leo.'
+    },
+    {
+        'id':'3'
+        'nombre' : 'Metro Dj’s'
+        'mision' : 'Metrodj’s planifica metas a corto, mediano y largo plazo con la finalidad de generar propuestas para fomentar la apreciación del talento unimetano en el ámbito musical.'
+        'vision':'Crear un espacio de encuentro de disc jockeys para dar a conocer el talento unimetano.'
+        'somos' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque varius urna eu libero ultrices fermentum. Suspendisse convallis fermentum dolor, vitae bibendum metus lobortis semper. Nulla sit amet molestie metus. Sed tortor sem, vestibulum quis vulputate sit amet, egestas accumsan leo.  '
+        'pertenecer':'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque varius urna eu libero ultrices fermentum. Suspendisse convallis fermentum dolor, vitae bibendum metus lobortis semper. Nulla sit amet molestie metus. Sed tortor sem, vestibulum quis vulputate sit amet, egestas accumsan leo.'
+    },
+    {
+       'id':'4'
+       'nombre':'Radio Unimetana'
+       'mision': 'Tenemos como misión llegar a la comunidad unimetana y fomentar a la participación en las actividades radiales.'
+       'vision': 'Brindar y fomentar a toda la comunidad unimetana la participación en las actividades radiales.'
+       'somos ' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque varius urna eu libero ultrices fermentum. Suspendisse convallis fermentum dolor, vitae bibendum metus lobortis semper. Nulla sit amet molestie metus. Sed tortor sem, vestibulum quis vulputate sit amet, egestas accumsan leo. '
+       'pertenecer':'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque varius urna eu libero ultrices fermentum. Suspendisse convallis fermentum dolor, vitae bibendum metus lobortis semper. Nulla sit amet molestie metus. Sed tortor sem, vestibulum quis vulputate sit amet, egestas accumsan leo. '
+    },
+    {
+        
+    }
+
+]
