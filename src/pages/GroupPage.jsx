@@ -2,27 +2,32 @@ import { useEffect, useState} from 'react'
 import Navbar from '../components/Navbar'
 import {Link} from 'react-router-dom'
 import {getClasifiacion} from '../Controllers/Agrupacion'
-import {getAgrupacionesbyId} from '../Controllers/Agrupacion'
+import {getAgrupacionesbyId, buscaragrupacion} from '../Controllers/Agrupacion'
 
 
 const GroupPage = () => {
-  const [category, setCategory] = useState(null);
+  const [category, setCategory] = useState(null);  
+  const [group, setGroup] = useState(null);
   useEffect(() => {
     const load = async () => {
       const category = await getClasifiacion();
+      console.log(category)
       setCategory(category);
+      buscaragrupacion(category)
+      setGroup(group)
+      
     };
     load();
   }, [])
 
-  const [group, setGroup] = useState(null);
-  useEffect(() => {
-    const load = async () => {
-      const group = await getAgrupacionesbyId();
-      setGroup(group);
-    };
-    load();
-  }, [])
+
+  // useEffect(() => {
+  //   const load = async () => {
+  //     const group = await getAgrupacionesbyId();
+  //     setGroup(group);
+  //   };
+  //   load();
+  // }, [])
   return (
     <div>
         <div>
@@ -42,6 +47,7 @@ const GroupPage = () => {
                 <p>{category.agrupaciones}</p>
               </div>
             ))}
+            <div>{group}</div>
         </div>
 
     </div>

@@ -30,9 +30,9 @@ export async function getAgrupacionesbyId() {
     try{
         const categoryCollection = collection(db, 'Categorías');
         const  categoryDocs = await getDocs(categoryCollection);
-        const agrupacionesID = categoryDocs.docs.map((category) =>(category.agrupaciones));
-        console.log(agrupacionesID)
-        const q = query(collection(db, "Agrupaciones"), where("id", "==", agrupacionesID));
+        const agrupacionesID = categoryDocs.docs.map((category) =>(category.data()));
+        console.log(agrupacionesID[0].agrupaciones[0],'holaaaaaaaaaaaaaaaaa')
+        const q = query(collection(db, "Agrupaciones"), where("id", "==", agrupacionesID[0]));
         const querySnapshot = await getDocs(q);
         const agrupaciones = querySnapshot.docs.map((agrupacion) =>(agrupacion.data()));
         console.log(agrupaciones);
@@ -57,3 +57,20 @@ export async function getVideoGameById(titulo) {
     }
 
 }*/
+
+export async function buscaragrupacion(category){
+    for (let n = 0; n < category.length; n++) {
+        const element = category[n].agrupaciones;
+        console.log(element)
+        for (let m = 0; m < element.length; m++) {
+            const id = element[m];
+            console.log(id)
+            const categoriaRef = doc(db, 'Agrupaciones',id);
+            const agrupacionDocs = await getDoc(categoriaRef)
+            console.log(agrupacionDocs.data().nombre) 
+            console.log(agrupacionDocs.data().mision)
+            console.log(agrupacionDocs.data().vision)
+            return agrupacionDocs
+        }
+    }
+}
