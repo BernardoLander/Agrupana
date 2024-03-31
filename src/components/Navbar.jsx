@@ -1,72 +1,37 @@
-import React, { useState, useEffect } from 'react'
-import {Link, useLocation } from 'react-router-dom'
-import styles from './Navbar.module.css';
-import Logo from '../images/Logo.jpg'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { auth } from '../firebase';
+import { useUser } from '../context/Usuariocontext';
+import { signOut } from 'firebase/auth';
 
 const Navbar = () => {
-  const location = useLocation();
-  const [isAuthPage, setIsAuthPage] = useState(false);
+  const { user } = useUser();
 
-  useEffect(() => {
-    setIsAuthPage(location.pathname === '/login' || location.pathname === '/registro');
-  }, [location]);
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      // Handle user state changes
+    } catch (error) {
+      console.error('Error signing out', error);
+    }
+  };
 
   return (
-      <div>
-        <nav className="navbar navbar-expand-lg " >
-          <div className={styles.headline}>
+      <nav>
+        <Link to="/">Home</Link>
+        {user ? (
+            <>
+              <Link to="/perfil">Perfil</Link>
+              <button onClick={handleSignOut}>Cerrar sesion</button>
+            </>
+        ) : (
+            <>
+              <Link to="/login">Iniciar Sesion</Link>
+              <Link to="/registro">Registrate</Link>
+            </>
+        )}
+      </nav>
+  );
+};
 
-            <a className="navbar-brand" href="#">
-              <img src={Logo}  className={styles.logoAgrupana1}/>
-            </a>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav mx auto">
-                {!isAuthPage ? (
-                    <>
-                      <div className= {styles.inicioWrapper}>
-                        <li className={styles.inicio}>
-                          <Link className="nav-link " to='/'>Inicio</Link>
-                        </li>
-                      </div>
-
-                      <div className= {styles.agrupacionesWrapper}>
-                        <li className={styles.agrupaciones}>
-                          <Link className="nav-link" to='/agrupaciones'>Agrupaciones Estudiantiles</Link>
-                        </li>
-                      </div>
-
-                      <li className="nav-item">
-                        <Link className="nav-link" to='/login'>Iniciar Sesión</Link>
-                      </li>
-
-                      <div className = {styles.registrateWrapper}>
-                        <li className={styles.registrate}>
-                          <Link className="nav-link" to='/registro'>Regístrate</Link>
-                        </li>
-                      </div>
-                    </>
-                ) : (
-                    <>
-                      <li className="nav-item">
-                        <Link className="nav-link" to='/login'>Iniciar Sesión</Link>
-                      </li>
-
-                      <div className = {styles.registrateWrapper}>
-                        <li className={styles.registrate}>
-                          <Link className="nav-link" to='/registro'>Regístrate</Link>
-                        </li>
-                      </div>
-                    </>
-                )}
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </div>
-  )
-}
-
-export default Navbar
+export default Navbar;
