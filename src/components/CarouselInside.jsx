@@ -1,6 +1,4 @@
 import React from "react";
-import ImageWithBorder from "../components/ImageWithBorder.jsx"
-import DotIndicator from "../components/DotIndicator.jsx"
 
 
 
@@ -12,23 +10,16 @@ function CarouselInside({title, description, pic}) {
           <div className="mission-text">
             <h2 className="mission-title">{title}</h2>
             <div className="mission-description">
-              <ImageWithBorder
-                src="../images/leftArrow.svg"
-              />
+
               <p>{description}
               </p>
             </div>
           </div>
           <img
-            loading="lazy"
             src={pic}
             className="mission-image"
           />
-          <ImageWithBorder
-            src="../images/rightArrow.svg"
-          />
         </div>
-        <DotIndicator />
       </section>
       <style jsx>{`
           .container {

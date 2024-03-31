@@ -2,12 +2,12 @@
         "Mision":{
         "description":
         "La misión de nuestra web es potenciar la comunidad de la Universidad Metropolitana, ofreciendo una solución completa y fácil de usar para la gestión de grupos estudiantiles. Al reunir la información y simplificar el proceso de unirse y administrar grupos, buscamos mejorar la experiencia estudiantil, fomentar una cultura de campus dinámica y respaldar al personal administrativo en la supervisión eficaz de las actividades grupales. Nuestra plataforma se dedica a facilitar conexiones y colaboraciones significativas entre los estudiantes, contribuyendo así a su crecimiento académico y personal.",
-        "pic": "../images/Mision.jpg"
+        "pic": "../images/Mision.png"
 
     },
         "Vision":{
             "description":
             "Nuestra visión es dar un sistema que sea usable y sencillo de administrar. Buscamos liberar el potencial de cada estudiante, brindándoles herramientas y recursos para alcanzar sus metas y sueños. Además, queremos permitir el crecimiento de los grupos estudiantiles a través de donaciones realizadas por los propios estudiantes. Nos esforzamos por crear un entorno inclusivo y colaborativo en el que los estudiantes puedan desarrollar sus habilidades y contribuir al crecimiento de su comunidad universitaria.",
-            "pic":"../images/Vision.jpg"
+            "pic":"../images/Vision.png"
     }
 }

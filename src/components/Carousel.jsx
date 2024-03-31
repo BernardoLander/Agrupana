@@ -2,41 +2,37 @@ import React from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import  "../components/Carousel.css";
 import CarouselInside from './CarouselInside';
 
 const Carousel = ({json}) => {
     const settings = {
-        dots: true,
-        speed: 1000,
-        slidesToShow: 1,
-        slidesToScroll: 2,
-        infinite: true,
-        autoplay: false,
-    }
-    ;
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+    };
   return (
-    <div className='body'>
-      <h2 className='h2'>Carousel Component</h2>
-      <Slider {...settings}>
-      <div>
-        <CarouselInside
+<Slider {...settings}>
+<div>
+  <h3><CarouselInside
         title ="La Misión"
         description ={json.Mision.description}
         pic = {json.Mision.pic} 
-      ></CarouselInside>
-      </div>
-      <div className='h3'>
-          <CarouselInside
-          title ="La Misión"
+      ></CarouselInside></h3>
+</div>
+<div>
+  <h3><CarouselInside
+          title ="La Visión"
           description ={json.Vision.description}
           pic = {json.Vision.pic} 
-          ></CarouselInside>
-      </div>
-      </Slider>
-    </div>
-  )
+          ></CarouselInside></h3>
+</div>
+</Slider>
+);
 }
 
 export default Carousel
+
+
 
