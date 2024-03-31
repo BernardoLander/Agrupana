@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import {Link} from 'react-router-dom'
 import agrupacionesData from '../data/agrupacionesData.json'
 import categoriaData from'../data/categoriaData.json'
+import Footer from '../components/Footer'
 import PhotoCard from '../components/PhotoCard'
 
 const GroupPage = () => {
@@ -47,7 +48,8 @@ const GroupPage = () => {
               
             </div>
           )}
-        </div>        
+        </div>
+       <Footer></Footer>        
   
     </div>
   )
