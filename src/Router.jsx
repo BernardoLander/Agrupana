@@ -5,6 +5,7 @@ import GroupPage from './pages/GroupPage';
 import PerfilUsuario from './pages/PerfilUsuario';
 import HomePage from './pages/HomePage';
 import AdditionalInfo from './pages/additional-info';
+import AgrupacionPage from './pages/AgrupacionPage';
 
 export const router = createBrowserRouter([
 
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
     {
         path:'/agrupaciones',
         element: <GroupPage/>
+    },
+    {
+        path: '/agrupacion/:agrupacionId',
+        element: <AgrupacionPage/>
     }
 //falta home
 ])

@@ -35,8 +35,12 @@ const GroupPage = () => {
               <ul>
                 {grupo.agrupaciones.map(agrupacionId => {
                   const agrupacion = agrupacionesData.find(agrupacion => agrupacion.ID === agrupacionId);
-                  return <li key={agrupacionId}>{agrupacion ? agrupacion.nombre : 'Agrupación no encontrada'}</li>;
+                  return <li key={agrupacionId}>
+                    <Link to={`/agrupacion/${agrupacionId}`}>{agrupacion ? agrupacion.nombre : 'Agrupación no encontrada'}</Link>
+                    
+                    </li>;
                 })}
+    
               </ul>
             </div>
           )}
