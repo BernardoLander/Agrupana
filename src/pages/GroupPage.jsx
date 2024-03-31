@@ -45,6 +45,7 @@ const GroupPage = () => {
                 image= {grupo.imagen}
                 btnMessage=''
                 link = ''
+                color= {"ff8200"}
               />
               
             </div>
