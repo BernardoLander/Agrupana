@@ -1,0 +1,18 @@
+.iniciarSesinChild {
+    position: absolute;
+    top: 151px;
+    left: 199px;
+    border-radius: 25px;
+    background-color: white;
+    width: 1041px;
+    height: 767px;
+  }
+.iniciarSesin1 {
+    left: calc(50% + 20px);
+    color: black;
+  }
+
+  .regstrate {
+    left: 499px;
+    cursor: pointer;
+  }

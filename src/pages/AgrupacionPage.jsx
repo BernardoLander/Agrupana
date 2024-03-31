@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import agrupacionesData from '../data/agrupacionesData.json'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Comments from '../components/Comments';
 
 const AgrupacionPage = () => {
     const { agrupacionId } = useParams();
@@ -25,6 +26,10 @@ const AgrupacionPage = () => {
           <p>{agrupacion.pertenecer}</p>
           <p>Misión: {agrupacion.mision}</p>
           <p>Visión: {agrupacion.vision}</p>
+        </div>
+        <div>
+            <h2>Experiencia de los Estudiantes</h2>
+            <Comments/>
         </div>
         <Footer/>
        
