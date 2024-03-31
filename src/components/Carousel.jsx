@@ -16,15 +16,15 @@ const Carousel = ({json, picvis, picmis}) => {
 <Slider {...settings}>
 <div>
   <h3><CarouselInside
-        title ="La Misión"
-        description ={json.Mision.description}
+        title ={"La Misión"}
+        description ={json.mision}
         pic = {picmis} 
       ></CarouselInside></h3>
 </div>
 <div>
   <h3><CarouselInside
           title ="La Visión"
-          description ={json.Vision.description}
+          description ={json.vision}
           pic = {picvis} 
           ></CarouselInside></h3>
 </div>

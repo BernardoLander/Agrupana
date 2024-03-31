@@ -84,7 +84,7 @@ const HomePage = () => {
         />
       </section>
       <Carousel
-      json={homejson} picvis={picvis} picmis={picmis}/>
+      json={homejson[0]} picvis={picvis} picmis={picmis}/>
       <Footer/>
 
     </div>
