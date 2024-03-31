@@ -3,23 +3,26 @@ import React from "react";
 
 import Button from '../components/Button';
 
-function PhotoCard({ title, description, image, isReversed , btnMessage, link}) {
+function PhotoCard({ title, description, image, isReversed, hasButton, btnMessage, link , color}) {
+  const actualColor = color || "#f6f6f6"; // Use default if color is not provided
+
+  
   return (
     <section className={`feature-section ${isReversed ? "reversed" : ""}`}>
       <div className="image-column">
         <img src={image} alt="" className="feature-image" />
       </div>
       <div className="content-column">
-        <div className="feature-content">
-          <h2 className="feature-title">{title}</h2>
-          <p className="feature-description">{description}</p>
-          <Button className={title} link ={link}>{btnMessage}</Button>
+        <div className="feature-content" style={{backgroundColor: {actualColor}}}>
+          <h2 className="feature-title" style={{backgroundColor: {actualColor}}}>{title}</h2>
+          <p className="feature-description" style={{backgroundColor: {actualColor}}}>{description}</p>
+          {hasButton && <Button className={title} link={link}>{btnMessage}</Button>}
         </div>
       </div>
       <style jsx>{`
         .feature-section {
           display: flex;
-          gap: 20px;
+          gap: 15px;
         }
         
         .feature-section.reversed {
@@ -49,12 +52,14 @@ function PhotoCard({ title, description, image, isReversed , btnMessage, link}) 
         }
         
         .feature-title {
-          font: 700 40px Roboto Condensed, -apple-system, Roboto, Helvetica, sans-serif;
+          font: Roboto Condensed, -apple-system, Roboto, Helvetica, sans-serif;
+          font-size: larger;
         }
         
         .feature-description {
           margin-top: 37px;
-          font: 16px Roboto, sans-serif;
+          font: Roboto, sans-serif;
+          font-size: smaller;
         }
         
         @media (max-width: 991px) {

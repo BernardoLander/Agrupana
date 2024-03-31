@@ -70,6 +70,7 @@ const HomePage = () => {
           title="Descubre quién eres"
           description="Encuentra tus habilidades, abre tu círculo social y sobretodo diviértete al máximo. No te limites, puedes pertenecer a más de una agrupación"
           image={dj}
+          hasButton
           btnMessage={"REGÍSTRATE GRATIS"}
           link = '/registro'
         />
@@ -79,6 +80,7 @@ const HomePage = () => {
           description="¿Aún no formas parte de un grupo estudiantil? Regístrate en la agrupación de tu preferencia. Selecciona la categoría y déjate llevar por la experencia."
           image={Metromun}
           isReversed
+          hasButton
           btnMessage={"VER AGRUPACIONES"}
           link = '/agrupaciones'
         />
