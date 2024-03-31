@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { auth, googleProvider, db, signInWithPopup, createUserWithEmailAndPassword, collection, query, where, getDocs, getDoc } from '../firebase';
+import { auth, googleProvider, db, signInWithPopup, createUserWithEmailAndPassword, collection, query, where, getDocs, getDoc, facebookProvider } from '../firebase';
 import { setDoc, doc } from 'firebase/firestore';
 import './Registro.css';
 import { MessageContext } from '../MessageContext';
 import { updateProfile } from 'firebase/auth';
+
 
 function Registro() {
   const [email, setEmail] = useState('');
@@ -119,6 +120,23 @@ function Registro() {
         await setDoc(userDocRef, { uid: user.uid, email: user.email, name: user.displayName });
       }
 
+      // Navigate to a new page where the user can enter their last name and phone number
+      navigate('/additional-info');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleFacebookSignIn = async () => {
+    try {
+      const result = await signInWithPopup(auth, facebookProvider);
+      const user = result.user;
+      const userDocRef = doc(db, 'Usuarios', user.uid);
+      const userDoc = await getDoc(userDocRef);
+      if (!userDoc.exists()) {
+        await setDoc(userDocRef, { uid: user.uid, email: user.email, name: user.displayName });
+      }
+
       navigate('/');
     } catch (error) {
       console.error(error);
@@ -129,14 +147,18 @@ function Registro() {
       <MessageContext.Provider value={{ message, setMessage }}>
         <div className="register-form">
           <h2>Register</h2>
-          <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value.toLowerCase())} />
-          <input type="text" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value.toLowerCase())} />
-          <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value.toLowerCase())} />
-          <input type="text" placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
-          <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          <input type="password" placeholder="Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+          <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value.toLowerCase())}/>
+          <input type="text" placeholder="Last Name" value={lastName}
+                 onChange={(e) => setLastName(e.target.value.toLowerCase())}/>
+          <input type="text" placeholder="Email" value={email}
+                 onChange={(e) => setEmail(e.target.value.toLowerCase())}/>
+          <input type="text" placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value)}/>
+          <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+          <input type="password" placeholder="Confirm Password" value={confirmPassword}
+                 onChange={(e) => setConfirmPassword(e.target.value)}/>
           <button onClick={handleSubmit}>Register</button>
           <button onClick={handleGoogleSignIn}>Register with Google</button>
+          <button onClick={handleFacebookSignIn}>Register with Facebook</button>
           {errorMessage && <p className="error-message">{errorMessage}</p>}
           {successMessage && <p className="success-message">You have successfully registered!</p>}
         </div>
