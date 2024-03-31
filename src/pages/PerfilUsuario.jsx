@@ -22,9 +22,9 @@ const PerfilUsuario = () => {
           if (userDoc.exists()) {
             const userData = userDoc.data();
             setUserData(userData);
-            setName(userData.nombre);
-            setLastName(userData.apellido);
-            setEmail(userData.correo);
+            setName(userData.name); // Changed from 'nombre' to 'name'
+            setLastName(userData.lastName); // Changed from 'apellido' to 'lastName'
+            setEmail(userData.email); // No change needed
             setPhone(userData.phone);
           } else {
             setError('User not found in Firestore.');
@@ -41,8 +41,8 @@ const PerfilUsuario = () => {
     try {
       // Update the profile in Firestore
       await updateDoc(doc(db, 'Usuarios', user.uid), {
-        nombre: name,
-        apellido: lastName,
+        name: name, // Changed from 'nombre' to 'name'
+        lastName: lastName, // Changed from 'apellido' to 'lastName'
       });
 
       // Update the profile in Firebase Authentication
