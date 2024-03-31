@@ -10,3 +10,5 @@ function ImageWithBorder({ src}) {
       />
     );
   }
+
+export default ImageWithBorder;

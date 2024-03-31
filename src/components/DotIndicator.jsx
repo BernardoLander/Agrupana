@@ -8,3 +8,5 @@ function DotIndicator() {
       </div>
     );
   }
+
+export default DotIndicator;

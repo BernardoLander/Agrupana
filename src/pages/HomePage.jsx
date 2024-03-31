@@ -1,10 +1,10 @@
 import React from 'react'
 import Navbar from '../components/Navbar';
 import Carousel from '../components/Carousel';
-import Button from '../components/Button';
 import PhotoCard from '../components/PhotoCard';
 import Footer from '../components/Footer';
 
+import homejson from '../assets/homepageCarouselInfo.json'
 import Unimet from '../images/Unimet.jpg'
 import dj from '../images/dj.png'
 import Metromun from '../images/Metromun.png'
@@ -81,7 +81,8 @@ const HomePage = () => {
           link = '/agrupaciones'
         />
       </section>
-      <Carousel/>
+      <Carousel
+      json={homejson}/>
       <Footer/>
 
     </div>

@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import  "../components/Carousel.css";
-import "../components/CarouselInside.jsx"
+import CarouselInside from './CarouselInside';
 
 const Carousel = ({json}) => {
     const settings = {
@@ -19,17 +19,19 @@ const Carousel = ({json}) => {
     <div className='body'>
       <h2 className='h2'>Carousel Component</h2>
       <Slider {...settings}>
-      <InsideInit
-      title ="La Misión"
-      description ={json.Mision.description}
-      pic = {json.Mision.pic} 
-      ></InsideInit>
-        <div className='h3'>
-        <InsideInit
-      title ="La Misión"
-      description ={json.Vision.description}
-      pic = {json.Vision.pic} 
-      ></InsideInit>
+      <div>
+        <CarouselInside
+        title ="La Misión"
+        description ={json.Mision.description}
+        pic = {json.Mision.pic} 
+      ></CarouselInside>
+      </div>
+      <div className='h3'>
+          <CarouselInside
+          title ="La Misión"
+          description ={json.Vision.description}
+          pic = {json.Vision.pic} 
+          ></CarouselInside>
       </div>
       </Slider>
     </div>

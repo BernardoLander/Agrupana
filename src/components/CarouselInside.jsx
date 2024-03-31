@@ -1,11 +1,12 @@
 import React from "react";
-import ImageWithBorder from "./components/ImageWithBorder.jsx"
-import DotIndicator from "./components/DotIndicator.jsx"
+import ImageWithBorder from "../components/ImageWithBorder.jsx"
+import DotIndicator from "../components/DotIndicator.jsx"
 
 
 
 function CarouselInside({title, description, pic}) {
     return (
+    <>
       <section className="mission-section">
         <div className="mission-content">
           <div className="mission-text">
@@ -29,22 +30,7 @@ function CarouselInside({title, description, pic}) {
         </div>
         <DotIndicator />
       </section>
-    );
-  }
-  
-  export default function InsideInit({title, description, pic}) {
-    return (
-      <>
-        <div className="container">
-          <div className="content">
-            <CarouselInside
-            title={title}
-            description={description}
-            pic={pic} />
-          </div>
-        </div>
-  
-        <style jsx>{`
+      <style jsx>{`
           .container {
             border-radius: 25px;
             display: flex;
@@ -148,8 +134,11 @@ function CarouselInside({title, description, pic}) {
             background-color: #000;
           }
         `}</style>
-      </>
-    );
+    </>
+    
+    ); 
   }
+  
+  export default CarouselInside;
   
   
