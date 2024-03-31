@@ -2,32 +2,38 @@
     {
      "ID": "1",
       "nombre": "Recreativos",
-      "agrupaciones": ["1", "2"]
+      "agrupaciones": ["1", "2"],
+      "imagen":"src/images/recreativo.jpg"
     },
  {
      "ID": "2",
       "nombre": "Culturales",
-      "agrupaciones": ["3", "4"]
+      "agrupaciones": ["3", "4"],
+      "imagen":"src/images/culturales.png"
     },
  {
      "ID": "3",
       "nombre": "Debates",
-      "agrupaciones": ["5"]
+      "agrupaciones": ["5"],
+      "imagen":"src/images/debate.jpg"
     },
  {
      "ID": "4",
       "nombre": "Deportivos",
-      "agrupaciones": ["6"]
+      "agrupaciones": ["6"],
+      "imagen": "src/images/deportivos.jpg"
     },
  {
      "ID": "5",
       "nombre": "Finanzas",
-      "agrupaciones": ["7"]
+      "agrupaciones": ["7"],
+      "imagen": "src/images/finanzas.jpg"
     },
  {
      "ID": "6",
       "nombre": "MUN",
-      "agrupaciones": ["8", "9"]
+      "agrupaciones": ["8", "9"],
+      "imagen": "src/images/mun.jpg"
     }
  
  
