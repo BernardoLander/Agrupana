@@ -5,6 +5,7 @@ import { setDoc, doc } from 'firebase/firestore';
 import './Registro.css';
 import { MessageContext } from '../MessageContext';
 import { updateProfile } from 'firebase/auth';
+import NavbarRegistro from '../components/NavbarRegistro';
 
 
 function Registro() {
@@ -146,7 +147,7 @@ function Registro() {
   return (
       <MessageContext.Provider value={{ message, setMessage }}>
         <div className="register-form">
-          <h2>Register</h2>
+          <NavbarRegistro/>
           <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value.toLowerCase())}/>
           <input type="text" placeholder="Last Name" value={lastName}
                  onChange={(e) => setLastName(e.target.value.toLowerCase())}/>

@@ -60,12 +60,7 @@
     text-align: left;
     display: inline-block;
     min-width: 62px;
-  }
-  .registrateWrapper {
     border: 0;
     background-color: #ff8200;
     z-index: 1;
-  }
-  .regstrateWrapper:hover {
-    background-color: #e66900;
   }

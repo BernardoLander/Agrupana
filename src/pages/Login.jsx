@@ -4,6 +4,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { getDoc, doc } from 'firebase/firestore';
 import './Login.module.css';
 import { auth, googleProvider, db, signInWithPopup, facebookProvider } from '../firebase';
+import NavbarLogin from '../components/NavbarLogin';
 
 function Login() {
     const [username, setUsername] = useState('');
@@ -82,6 +83,7 @@ function Login() {
 
     return (
         <div className="login-container">
+            <NavbarLogin/>
             <h2>Iniciar sesión</h2>
             <input
                 type="text"

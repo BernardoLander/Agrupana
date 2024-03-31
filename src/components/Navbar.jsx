@@ -4,6 +4,8 @@ import { auth } from '../firebase';
 import { useUser } from '../context/Usuariocontext';
 import { signOut } from 'firebase/auth';
 import styles from './Navbar.module.css';
+import Logo from '../images/Logo.jpg'
+
 
 const Navbar = () => {
   const { user } = useUser();
@@ -19,20 +21,37 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={styles.navbar}>
-      <Link to="/">Home</Link>
-      {!user && (
+    <nav className='navbar navbar-expand-lg '>
+      <div className={styles.headline}>
+        <a className="navbar-brand" href="#">
+          <img src={Logo}  className={styles.logoAgrupana1}/>
+        </a>
+        
+        <div className= {styles.inicioWrapper}>
+          <li className={styles.inicio}>
+            <Link className="nav-link " to='/'>Inicio</Link>
+          </li>
+        </div>
+        <div className= {styles.agrupacionesWrapper}>
+          <li className={styles.agrupaciones}>
+            <Link className="nav-link" to='/agrupaciones'>Agrupaciones Estudiantiles</Link>
+          </li>
+        </div>
+        {!user && (
           <>
-            <Link to="/registro">Registrate</Link>
+            <Link className={styles.registrate} to='/registro'>Regístrate</Link>
             <Link to="/login">Iniciar Sesion</Link>
           </>
-      )}
-      {user && (
+            
+        )}
+        {user && (
           <>
             <Link to="/perfil">Perfil</Link>
             <button onClick={handleSignOut}>Cerrar sesion</button>
           </>
-      )}
+        )}
+      </div>
+      
     </nav>
 );
 };
