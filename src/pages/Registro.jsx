@@ -119,7 +119,7 @@ function Registro() {
         await setDoc(userDocRef, { uid: user.uid, email: user.email, name: user.displayName });
       }
 
-      navigate('/Homepage');
+      navigate('/');
     } catch (error) {
       console.error(error);
     }
