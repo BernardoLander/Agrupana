@@ -16,6 +16,7 @@ function CarouselInside({title, description, pic}) {
             </div>
           </div>
           <img
+            loading="lazy"
             src={pic}
             className="mission-image"
           />
@@ -94,35 +95,10 @@ function CarouselInside({title, description, pic}) {
             }
           }
           
-          .image-with-border {
-            aspect-ratio: 0.52;
-            width: 12px;
-            stroke-width: 6px;
-            stroke: #000;
-            border: 6px solid #000;
-          }
-          
           .mission-image {
             aspect-ratio: 1.35;
             width: 100%;
             object-fit: cover;
-          }
-          
-          .dot-indicator {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-          }
-          
-          .dot {
-            border-radius: 50%;
-            width: 16px;
-            height: 16px;
-            background-color: rgba(0, 0, 0, 0.2);
-          }
-          
-          .dot.active {
-            background-color: #000;
           }
         `}</style>
     </>
