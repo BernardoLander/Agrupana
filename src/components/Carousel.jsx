@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CarouselInside from './CarouselInside';
 
-const Carousel = ({json}) => {
+const Carousel = ({json, picvis, picmis}) => {
     const settings = {
       dots: true,
       infinite: true,
@@ -18,14 +18,14 @@ const Carousel = ({json}) => {
   <h3><CarouselInside
         title ="La Misión"
         description ={json.Mision.description}
-        pic = {json.Mision.pic} 
+        pic = {picmis} 
       ></CarouselInside></h3>
 </div>
 <div>
   <h3><CarouselInside
           title ="La Visión"
           description ={json.Vision.description}
-          pic = {json.Vision.pic} 
+          pic = {picvis} 
           ></CarouselInside></h3>
 </div>
 </Slider>

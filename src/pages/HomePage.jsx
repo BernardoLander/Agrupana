@@ -8,6 +8,8 @@ import homejson from '../assets/homepageCarouselInfo.json'
 import Unimet from '../images/Unimet.jpg'
 import dj from '../images/dj.png'
 import Metromun from '../images/Metromun.png'
+import picvis from '../images/Vision.png'
+import picmis from '../images/Mision.png'
 
 
 
@@ -82,7 +84,7 @@ const HomePage = () => {
         />
       </section>
       <Carousel
-      json={homejson}/>
+      json={homejson} picvis={picvis} picmis={picmis}/>
       <Footer/>
 
     </div>
