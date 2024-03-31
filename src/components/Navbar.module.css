@@ -23,6 +23,7 @@
   .inicio {
     font-weight: 500;
     min-width: 33px;
+    background-color: #f8f9fa;
   }
   .inicioWrapper {
 
@@ -32,11 +33,13 @@
   .agrupacionesEstudiantiles {
     font-weight: 500;
     z-index: 1;
+    background-color: #f8f9fa
   }
 
   .agrupacionesEstudiantilesWrapper {
 
     padding: 0;
+    background-color: #f8f9fa;
   }
 
   .logoAgrupana1 {
@@ -50,6 +53,7 @@
     max-height: 100%;
     object-fit: cover;
     z-index: 2;
+    background-color: #f8f9fa
   }
 
   .registrate {
@@ -63,4 +67,19 @@
     border: 0;
     background-color: #ff8200;
     z-index: 1;
+  }
+
+  .groupIcon{
+    position: absolute;
+    height: 56.3%;
+    width: 3.91%;
+    top: 22%;
+    right: 8.03%;
+    bottom: 21.7%;
+    left: 88.06%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;  
+    background-color: #f8f9fa;  
   }

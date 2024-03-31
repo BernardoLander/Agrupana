@@ -19,6 +19,7 @@
     max-width: 100%;
     overflow: hidden;
     max-height: 100%;
+    background-color: white;
   }
   .flatColorIconsgoogle {
     height: 4.69%;
@@ -32,6 +33,7 @@
     position: absolute;
     display: flex;
     align-items: center;
+    background-color: white;
   }
   .continuarCon {
     height: 4.69%;
@@ -75,6 +77,7 @@
     left: 53.19%;
     display: flex;
     align-items: center;
+    background-color: white;
   }
   .apellido,
   .confirmarContrasea,
@@ -122,7 +125,7 @@
     position: absolute;
     top: 178px;
     font-size: 48px;
-    font-family: var(--font-roboto-condensed);
+    font-family:Roboto Condensed;
   }
   .iniciarSesin {
     left: calc(50% + 20px);
@@ -224,6 +227,6 @@
     text-align: left;
     font-size: 24px;
     color: black;
-    font-family: var(--font-roboto);
+    font-family: Roboto;
   }
   

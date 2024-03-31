@@ -1,0 +1,240 @@
+.perfilDeUsuario {
+    width: 1440px;
+    background-color: #f6f6f6;
+    max-width: 100%;
+    height: 1024px;
+    overflow: hidden;
+    text-align: left;
+    font-size: 20px;
+    color: black;
+    font-family: Roboto;
+  }
+  
+
+.perfilDeUsuarioChild {
+    position: absolute;
+    height: 5.86%;
+    width: 27.08%;
+    top: 60.64%;
+    right: 17.85%;
+    bottom: 33.5%;
+    left: 55.07%;
+    border-radius: 10px;
+    background-color: #ff8200;
+    border: 3px solid #ffdcb8;
+    box-sizing: border-box;
+    font-size:28px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  
+  .ttulo {
+    position: absolute;
+    top: 160px;
+    left: 430px;
+    width: 580px;
+    height: 84px;
+    font-size: 50px;
+    font-family: Roboto Condensed;
+    background-color: #f6f6f6;
+    text-transform: uppercase;
+  }
+  .perfilDeUsuarioItem {
+    position: absolute;
+    top: 242px;
+    left: 408px;
+    border-top: 4px solid #ff8200;
+    box-sizing: border-box;
+    width: 623px;
+    height: 4px;
+  }
+  .groupIcon1 {
+    position: absolute;
+    height: 71.27%;
+    width: 9.59%;
+    top: 15.19%;
+    right: 85.64%;
+    bottom: 13.54%;
+    left: 4.77%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  .groupChild {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 10px;
+    background-color:rgba(217, 217, 217, 0.1);
+    border: 3px solid #ffdcb8;
+    box-sizing: border-box;
+  }
+  .correoDelUsuario,
+  .nombreYApellido {
+    position: absolute;
+    left: 111px;
+    display: flex;
+    align-items: center;
+    height: 31px;
+  }
+  .correoDelUsuario {
+    top: 13px;
+    font-size: 22px;
+    font-weight: 500;
+    width: 230px;
+  }
+  .nombreYApellido {
+    top: 39px;
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.4);
+    width: 186px;
+  }
+  .cambiarFoto {
+    position: relative;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .cambiarFotoWrapper {
+    position: absolute;
+    top: 20px;
+    left: 387px;
+    border-radius: 56px;
+    background-color: #ff8200;
+    width: 175px;
+    height: 39px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family:Roboto Condensed;
+  }
+  .groupParent {
+    position: absolute;
+    height: 7.71%;
+    width: 40.76%;
+    top: 29.69%;
+    right: 29.65%;
+    bottom: 62.6%;
+    left: 29.58%;
+  }
+  .guardarCambiosWrapper {
+    position: absolute;
+    top: 853px;
+    left: 220px;
+    border-radius: 56px;
+    background-color: #ff8200;
+    width: 175px;
+    height: 39px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: Roboto Condensed;
+  }
+  .nombre,
+  .telfono {
+    width: 20.9%;
+    top: 41.89%;
+    font-size: 24px;
+    background-color: #f6f6f6;
+  }
+  .nombre {
+    position: absolute;
+    height: 4.69%;
+    left: 15.28%;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+  }
+  .telfono {
+    left: 55.07%;
+  }
+  .apellido,
+  .correoElectrnico,
+  .telfono{
+    position: absolute;
+    height: 4.69%;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+  }
+ 
+  .apellido,
+  .correoElectrnico {
+    width: 20.9%;
+    top: 55.96%;
+    left: 15.28%;
+    font-size: 24px;
+    background-color:#f6f6f6;
+  }
+  .correoElectrnico {
+    top: 70.02%;
+  }
+  .perfilDeUsuarioChild1,
+  .perfilDeUsuarioChild2,
+  .perfilDeUsuarioInner,
+  .rectangleDiv {
+    position: absolute;
+    height: 5.86%;
+    width: 27.08%;
+    top: 47.07%;
+    right: 57.64%;
+    bottom: 47.07%;
+    left: 15.28%;
+    border-radius: 10px;
+    background-color: rgba(217, 217, 217, 0.1);
+    border: 3px solid  #ffdcb8;
+    box-sizing: border-box;
+  }
+  .perfilDeUsuarioChild1,
+  .perfilDeUsuarioChild2,
+  .rectangleDiv {
+    right: 17.85%;
+    left: 55.07%;
+  }
+  .perfilDeUsuarioChild1,
+  .perfilDeUsuarioChild2 {
+    top: 61.13%;
+    right: 57.64%;
+    bottom: 33.01%;
+    left: 15.28%;
+  }
+  .perfilDeUsuarioChild2 {
+    top: 75.2%;
+    bottom: 18.95%;
+  }
+  .estudiantecorreounimeteduv {
+    top: 75.78%;
+    left: 16.94%;
+    color: #bdbdbd;
+  }
+  .cambiarContrasea,
+  .div,
+  .estudiantecorreounimeteduv {
+    position: absolute;
+    height: 4.69%;
+    width: 30.21%;
+    display: flex;
+    align-items: center;
+    background-color: #f6f6f6;
+  }
+  .cambiarContrasea {
+    top: 76.37%;
+    left: 55.07%;
+    text-decoration: underline;
+    color: #ff8200;
+  }
+  .div {
+    top: 47.66%;
+    left: 56.32%;
+    color:#bdbdbd;
+  }
+ 

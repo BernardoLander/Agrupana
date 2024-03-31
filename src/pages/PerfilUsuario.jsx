@@ -3,6 +3,8 @@ import { useUser } from "../context/Usuariocontext";
 import { getDoc, doc, updateDoc } from 'firebase/firestore';
 import { db } from "../firebase";
 import { updateProfile } from 'firebase/auth';
+import styles from './PerfilUsuario.module.css'
+import Perfil from '../images/usuario.png'
 
 const PerfilUsuario = () => {
   const { user } = useUser();
@@ -61,30 +63,45 @@ const PerfilUsuario = () => {
   }
 
   return (
-      <div className="profile-container">
-        <h2>Mi Perfil</h2>
-        <div className="profile-info">
-          <div>
-            <label>Nombre:</label>
-            <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
-          </div>
-          <div>
-            <label>Apellido:</label>
-            <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)}/>
-          </div>
-          <div>
-            <label>Email:</label>
-            <input type="email" value={email} disabled/>
-          </div>
-          <div>
-            <label>Phone:</label>
-            <input type="text" value={phone} disabled/>
-          </div>
-        </div>
-        <button className="btn-update" onClick={handleUpdateProfile}>Actualizar</button>
-        {error && <p className="error-message">{error}</p>}
-        {successMessage && <p className="success-message">{successMessage}</p>}
+    <div className={styles.perfilDeUsuario}>
+      <div className={styles.ttulo}>
+        <b >PERFIL DE USUARIO</b>
       </div>
+      <div className={styles.perfilDeUsuarioItem} />
+
+      <div className={styles.groupParent}>
+        <img className={styles.groupIcon1} src={Perfil}/>
+        <div className={styles.groupChild} />
+        <div className={styles.correoDelUsuario}>{email}</div>
+        <div className={styles.nombreYApellido}>{name}, {lastName}</div>
+        <div className={styles.cambiarFotoWrapper}>CAMBIAR FOTO</div>
+      </div>
+
+      <div className={styles.nombre}>Nombre</div>
+      <input className={styles.perfilDeUsuarioInner} type="text" value={name} onChange={(e) => setName(e.target.value)}/>
+
+      <div className={styles.telfono}>Teléfono</div>
+      <input className={styles.rectangleDiv} type="text" value={phone} disabled/>
+
+      <div className={styles.apellido}>Apellido</div>
+      <input className={styles.perfilDeUsuarioChild1} type="text" value={lastName} onChange={(e) => setLastName(e.target.value)}/>
+
+      <div className={styles.correoElectrnico}>Correo Electrónico</div>
+      <input className={styles.perfilDeUsuarioChild2} type="email" value={email} disabled/>
+
+      <button className={styles.guardarCambiosWrapper} onClick={handleUpdateProfile}>Guardar Cambios</button>
+      <div className={styles.cambiarContrasea}>Cambiar Contraseña</div>
+      <div className={styles.perfilDeUsuarioChild} 
+        //link
+      >
+        VER MIS AGRUPACIONES
+      </div>
+      {error && <p className="error-message">{error}</p>}
+      {successMessage && <p className="success-message">{successMessage}</p>}
+      
+    </div>
+
+
   );
 }
 
