@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, FacebookAuthProvider } from "firebase/auth";
-import { getFirestore } from "firebase/firestore"; // Add this line
+import { getFirestore, collection, getDocs, query, where, getDoc } from "firebase/firestore"; 
 import { getStorage } from 'firebase/storage';
 
 // Your web app's Firebase configuration
@@ -16,7 +16,9 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const db = getFirestore(app); // Now getFirestore is defined
+const db = getFirestore(app); 
 const googleProvider = new GoogleAuthProvider();
 
-export { auth, createUserWithEmailAndPassword, googleProvider, db, signInWithPopup, onAuthStateChanged};
+const facebookProvider = new FacebookAuthProvider();
+
+export { auth, createUserWithEmailAndPassword, googleProvider, db, signInWithPopup, onAuthStateChanged, facebookProvider, getStorage, collection, getDocs, query, where, getDoc}; 

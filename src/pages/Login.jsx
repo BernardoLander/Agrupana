@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { getDoc, doc } from 'firebase/firestore';
 import './Login.module.css';
-import { auth, googleProvider, db, signInWithPopup } from '../firebase';
+import { auth, googleProvider, db, signInWithPopup, facebookProvider } from '../firebase';
 
 function Login() {
     const [username, setUsername] = useState('');
@@ -11,6 +11,7 @@ function Login() {
     const [error, setError] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
 
     const handleLogin = async () => {
         if (!username || !password) {
@@ -20,13 +21,13 @@ function Login() {
 
         try {
             const userCredential = await signInWithEmailAndPassword(auth, username, password);
-            const userDoc = await getDoc(doc(db, 'users', userCredential.user.uid));
+            const userDoc = await getDoc(doc(db, 'Usuarios', userCredential.user.uid));
             if (!userDoc.exists()) {
                 setError('User not found in Firestore.');
                 return;
             }
 
-            navigate('/Homepage');
+            navigate('/');
             setLoggedIn(true);
         } catch (error) {
             if (error.code === 'auth/user-not-found') {
@@ -40,18 +41,42 @@ function Login() {
     };
 
     const handleGoogleSignIn = async () => {
+        setLoading(true);
         try {
             const result = await signInWithPopup(auth, googleProvider);
             const user = result.user;
-            const userDoc = await getDoc(doc(db, 'users', user.uid));
+            const userDocRef = doc(db, 'Usuarios', user.uid);
+            const userDoc = await getDoc(userDocRef);
             if (!userDoc.exists()) {
-                setError('User not found in Firestore.');
-                return;
+                await setDoc(userDocRef, { uid: user.uid, email: user.email });
             }
 
-            navigate('/Homepage');
+            navigate('/');
         } catch (error) {
             console.error(error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleFacebookSignIn = async () => {
+        setLoading(true);
+        try {
+            const result = await signInWithPopup(auth, facebookProvider);
+            const user = result.user;
+            const userDocRef = doc(db, 'Usuarios', user.uid);
+            const userDoc = await getDoc(userDocRef);
+            if (!userDoc.exists()) {
+                // User not found in Firestore, create a new document
+                await setDoc(userDocRef, { uid: user.uid, email: user.email });
+            }
+
+            navigate('/');
+        } catch (error) {
+            console.error(error);
+            
+        }finally {
+            setLoading(false);
         }
     };
 
@@ -70,8 +95,9 @@ function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <button onClick={handleLogin}>Iniciar sesión</button>
-            <button onClick={handleGoogleSignIn}>Iniciar sesión con Google</button>
+            <button onClick={handleLogin} disabled={loading}>Iniciar sesión</button>
+            <button onClick={handleGoogleSignIn} disabled={loading}>Iniciar sesión con Google</button>
+            <button onClick={handleFacebookSignIn} disabled={loading}>Iniciar sesión con Facebook</button>
             {error && <p className="error-message">{error}</p>}
             {loggedIn && <p className="success-message">¡Has iniciado sesión correctamente!</p>}
         </div>
