@@ -1,0 +1,39 @@
+[
+    {
+     "ID": "1",
+      "nombre": "Recreativos",
+      "agrupaciones": ["1", "2"]
+    },
+ {
+     "ID": "2",
+      "nombre": "Culturales",
+      "agrupaciones": ["3", "4"]
+    },
+ {
+     "ID": "3",
+      "nombre": "Debates",
+      "agrupaciones": ["5"]
+    },
+ {
+     "ID": "4",
+      "nombre": "Deportivos",
+      "agrupaciones": ["6"]
+    },
+ {
+     "ID": "5",
+      "nombre": "Finanzas",
+      "agrupaciones": ["7"]
+    },
+ {
+     "ID": "6",
+      "nombre": "MUN",
+      "agrupaciones": ["8", "9"]
+    }
+ 
+ 
+  ]
+ 
+ 
+ 
+ 
+ 

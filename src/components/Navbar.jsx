@@ -19,6 +19,7 @@ const Navbar = () => {
   return (
       <nav>
         <Link to="/">Home</Link>
+        <Link to="/agrupaciones">Agrupaciones</Link>
         {user ? (
             <>
               <Link to="/perfil">Perfil</Link>
