@@ -26,7 +26,7 @@ const Navbar = () => {
         <a className="navbar-brand" href="#">
           <img src={Logo}  className={styles.logoAgrupana1}/>
         </a>
-        
+
         <div className= {styles.inicioWrapper}>
           <li className={styles.inicio}>
             <Link className="nav-link " to='/'>Inicio</Link>
@@ -37,12 +37,15 @@ const Navbar = () => {
             <Link className="nav-link" to='/agrupaciones'>Agrupaciones Estudiantiles</Link>
           </li>
         </div>
+        {user && user.role === 'admin' && (
+            <Link to="/create-agrupation"><button>Create Agrupation</button></Link>
+        )}
         {!user && (
           <>
             <Link className={styles.registrate} to='/registro'>Regístrate</Link>
             <Link to="/login">Iniciar Sesion</Link>
           </>
-            
+
         )}
         {user && (
           <>
@@ -51,7 +54,7 @@ const Navbar = () => {
           </>
         )}
       </div>
-      
+
     </nav>
 );
 };

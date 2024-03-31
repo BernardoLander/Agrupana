@@ -42,7 +42,7 @@ function Registro() {
       alert('El correo ya esta registrado');
       return false;
     }
-    // ... existing validation checks ...
+
 
     switch (true) {
       case email.includes(estudiante):
@@ -100,7 +100,8 @@ function Registro() {
         email: email,
         name: name,
         lastName: lastName,
-        phone: phone
+        phone: phone,
+        role: email.includes(admin) ? 'admin' : 'user' // Add role to user document
       };
       await setDoc(doc(db, 'Usuarios', userCredential.user.uid), userDoc);
 
