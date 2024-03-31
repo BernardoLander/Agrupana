@@ -41,6 +41,7 @@ const GroupPage = () => {
                     <Link to={`/agrupacion/${agrupacionId}`}>{agrupacion ? agrupacion.nombre : 'Agrupación no encontrada'}</Link>
                     </li>)
                 })}
+                isReversed={grupo?.ID % 2 === 0}
                 image= {grupo.imagen}
                 btnMessage=''
                 link = ''
