@@ -1,10 +1,10 @@
 import React from 'react'
 import Navbar from '../components/Navbar';
 import Carousel from '../components/Carousel';
-import Button from '../components/Button';
 import PhotoCard from '../components/PhotoCard';
 import Footer from '../components/Footer';
 
+import homejson from '../assets/homepageCarouselInfo.json'
 import Unimet from '../images/Unimet.jpg'
 import dj from '../images/dj.png'
 import Metromun from '../images/Metromun.png'
@@ -69,6 +69,7 @@ const HomePage = () => {
           description="Encuentra tus habilidades, abre tu círculo social y sobretodo diviértete al máximo. No te limites, puedes pertenecer a más de una agrupación"
           image={dj}
           btnMessage={"REGÍSTRATE GRATIS"}
+          link = '/registro'
         />
         
         <PhotoCard
@@ -77,10 +78,11 @@ const HomePage = () => {
           image={Metromun}
           isReversed
           btnMessage={"VER AGRUPACIONES"}
-        >
-        </PhotoCard>
+          link = '/agrupaciones'
+        />
       </section>
-      <Carousel/>
+      <Carousel
+      json={homejson}/>
       <Footer/>
 
     </div>

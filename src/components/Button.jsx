@@ -2,14 +2,15 @@ import React from 'react';
 
 
 
-function Button({ children, className }) {
+function HomeButton({ children, className, link }) {
     return (
-      <button className={`button ${className}`}>
+      <button className={`button ${className}`} onClick={link}>
         {children}
         <style jsx>{`
           .button {
             justify-content: center;
             border-radius: 56px;
+            border-color: #fff;
             background-color: #ffad57;
             align-self: center;
             color: #fff;
@@ -21,4 +22,4 @@ function Button({ children, className }) {
       </button>
     );
   }
-export default Button
+export default HomeButton
