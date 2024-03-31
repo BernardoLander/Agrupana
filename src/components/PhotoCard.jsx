@@ -3,7 +3,7 @@ import React from "react";
 
 import Button from '../components/Button';
 
-function PhotoCard({ title, description, image, isReversed , btnMessage}) {
+function PhotoCard({ title, description, image, isReversed , btnMessage, link}) {
   return (
     <section className={`feature-section ${isReversed ? "reversed" : ""}`}>
       <div className="image-column">
@@ -13,7 +13,7 @@ function PhotoCard({ title, description, image, isReversed , btnMessage}) {
         <div className="feature-content">
           <h2 className="feature-title">{title}</h2>
           <p className="feature-description">{description}</p>
-          <Button>{btnMessage}</Button>
+          <Button link>{btnMessage}</Button>
         </div>
       </div>
       <style jsx>{`

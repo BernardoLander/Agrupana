@@ -69,6 +69,7 @@ const HomePage = () => {
           description="Encuentra tus habilidades, abre tu círculo social y sobretodo diviértete al máximo. No te limites, puedes pertenecer a más de una agrupación"
           image={dj}
           btnMessage={"REGÍSTRATE GRATIS"}
+          link = '/registro'
         />
         
         <PhotoCard
@@ -77,8 +78,8 @@ const HomePage = () => {
           image={Metromun}
           isReversed
           btnMessage={"VER AGRUPACIONES"}
-        >
-        </PhotoCard>
+          link = '/agrupaciones'
+        />
       </section>
       <Carousel/>
       <Footer/>
