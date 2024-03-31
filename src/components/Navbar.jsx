@@ -19,24 +19,22 @@ const Navbar = () => {
   };
 
   return (
-      <nav className={styles.navbar}>
-        <Link to="/">Home</Link>
-        {!user && (
-            <>
-              <Link to="/registro">Registrate</Link>
-              <Link to="/login">Iniciar Sesion</Link>
-            </>
-        )}
-        {user && (
-        <Link to="/agrupaciones">Agrupaciones</Link>
-        {user ? (
-            <>
-              <Link to="/perfil">Perfil</Link>
-              <button onClick={handleSignOut}>Cerrar sesion</button>
-            </>
-        )}
-      </nav>
-  );
+    <nav className={styles.navbar}>
+      <Link to="/">Home</Link>
+      {!user && (
+          <>
+            <Link to="/registro">Registrate</Link>
+            <Link to="/login">Iniciar Sesion</Link>
+          </>
+      )}
+      {user && (
+          <>
+            <Link to="/perfil">Perfil</Link>
+            <button onClick={handleSignOut}>Cerrar sesion</button>
+          </>
+      )}
+    </nav>
+);
 };
 
 export default Navbar;
