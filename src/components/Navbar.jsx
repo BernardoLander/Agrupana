@@ -5,6 +5,7 @@ import { useUser } from '../context/Usuariocontext';
 import { signOut } from 'firebase/auth';
 import styles from './Navbar.module.css';
 import Logo from '../images/Logo.jpg'
+import Perfil from '../images/usuario.png'
 
 
 const Navbar = () => {
@@ -46,8 +47,11 @@ const Navbar = () => {
         )}
         {user && (
           <>
-            <Link to="/perfil">Perfil</Link>
-            <button onClick={handleSignOut}>Cerrar sesion</button>
+            <Link className={styles.groupIcon} to="/perfil">
+              <img src={Perfil} />
+            </Link>
+            
+            <button className={styles.registrate} onClick={handleSignOut}>Cerrar sesion</button>
           </>
         )}
       </div>

@@ -155,7 +155,7 @@
     height: 590px;
     font-size: 20px;
     background-color: white;
-    font-family: var(--font-roboto);
+    font-family: Roboto;
   }
   .iniciarSesin {
     width: 1440px;
@@ -166,6 +166,6 @@
     text-align: left;
     font-size: 48px;
     color:#D9D9D9;
-    font-family: var(--font-roboto-condensed);
+    font-family: Roboto Condensed;
   }
   

@@ -152,16 +152,29 @@ function Registro() {
         <div className={styles.registro}>
           <div className= {styles.registroChild}>
             <NavbarRegistro/>
-            <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value.toLowerCase())}/>
-            <input type="text" placeholder="Last Name" value={lastName}
+            <div className={styles.nombre}>Nombre</div>
+            <input  className={styles.rectangleDiv} type="text" placeholder="" value={name} onChange={(e) => setName(e.target.value.toLowerCase())}/>
+            
+            <div className={styles.apellido}>Apellido</div>
+            <input  className={styles.registroChild2} type="text" placeholder="" value={lastName}
                   onChange={(e) => setLastName(e.target.value.toLowerCase())}/>
-            <input type="text" placeholder="Email" value={email}
+            
+            <div className={styles.correoElectrnico}>Correo Electrónico</div>
+            <input  className={styles.registroChild1} type="text" placeholder="estudiante@correo.unimet.edu.ve" value={email}
                   onChange={(e) => setEmail(e.target.value.toLowerCase())}/>
-            <input type="text" placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value)}/>
-            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-            <input type="password" placeholder="Confirm Password" value={confirmPassword}
+            
+            <div className={styles.telfono}>Teléfono</div>
+            <input  className={styles.registroChild4}  type="text" placeholder="" value={phone} onChange={(e) => setPhone(e.target.value)}/>
+            
+            <div className={styles.contrasea}>Contraseña</div>
+            <input   className={styles.registroChild3} type="password" placeholder="*********" value={password} onChange={(e) => setPassword(e.target.value)}/>
+            
+            <div className={styles.confirmarContrasea}>Confirmar Contraseña</div>
+            <input  className={styles.registroItem} type="password" placeholder="*********" value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}/>
-            <button onClick={handleSubmit}>Register</button>
+           
+            <button className={styles.crearCuentaWrapper} onClick={handleSubmit}>Crear Cuenta</button>
+            <div className={styles.continuarCon}>-- Continuar con --</div>
             <img
                 className={styles.flatColorIconsgoogle}
                 src={Google}
