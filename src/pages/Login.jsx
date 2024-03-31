@@ -5,6 +5,9 @@ import { getDoc, doc } from 'firebase/firestore';
 import './Login.module.css';
 import { auth, googleProvider, db, signInWithPopup, facebookProvider } from '../firebase';
 import NavbarLogin from '../components/NavbarLogin';
+import styles from './Login.module.css'
+import Google from '../images/google.png'
+import Facebook from '../images/facebook.png'
 
 function Login() {
     const [username, setUsername] = useState('');
@@ -82,27 +85,42 @@ function Login() {
     };
 
     return (
-        <div className="login-container">
+        <div className={styles.iniciarSesin}>
+            <div className={styles.iniciarSesinChild}/>
             <NavbarLogin/>
-            <h2>Iniciar sesión</h2>
-            <input
+            <div className ={styles.component1}>
+            <div className={styles.correoElectrnico}>Correo Electrónico</div>
+            <input className={styles.component1Child}
                 type="text"
-                placeholder="Email"
+                placeholder ="estudiante@correo.unimet.edu.ve"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
             />
-            <input
+            <div className={styles.contrasea}>Contraseña</div>
+            <input className={styles.component1Item}
                 type="password"
                 placeholder="Contraseña"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <button onClick={handleLogin} disabled={loading}>Iniciar sesión</button>
-            <button onClick={handleGoogleSignIn} disabled={loading}>Iniciar sesión con Google</button>
-            <button onClick={handleFacebookSignIn} disabled={loading}>Iniciar sesión con Facebook</button>
+            <button className ={styles.iniciarSesinWrapper}onClick={handleLogin} disabled={loading}>Iniciar sesión</button>
+            <div className={styles.olvidSuContrasea}>¿Olvidó su contraseña?</div>
+            <div className={styles.accesoRpidoCon}>-- Acceso rápido con --</div>
+            <img
+                className={styles.flatColorIconsgoogle}
+                src={Google}
+                onClick={handleGoogleSignIn} disabled={loading}
+            />
+            <img 
+                className={styles.frameIcon} 
+                src={Facebook} 
+                onClick={handleFacebookSignIn} disabled={loading}
+            />
             {error && <p className="error-message">{error}</p>}
             {loggedIn && <p className="success-message">¡Has iniciado sesión correctamente!</p>}
-        </div>
+
+            </div>
+                    </div>
     );
 }
 

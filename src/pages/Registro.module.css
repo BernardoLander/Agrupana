@@ -1,0 +1,229 @@
+.registroChild {
+    position: absolute;
+    top: 157px;
+    left: 199px;
+    border-radius: 25px;
+    background-color: white;
+    width: 1041px;
+    height: 767px;
+  }
+  .flatColorIconsgoogle,
+  .frameIcon {
+    position: absolute;
+    height: 4.45%;
+    width: 3.36%;
+    top: 79%;
+    right: 46.78%;
+    bottom: 16.54%;
+    left: 49.86%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+  .flatColorIconsgoogle {
+    height: 4.69%;
+    width: 3.33%;
+    right: 52.99%;
+    bottom: 16.31%;
+    left: 43.68%;
+  }
+  .continuarCon,
+  .crearCuenta {
+    position: absolute;
+    display: flex;
+    align-items: center;
+  }
+  .continuarCon {
+    height: 4.69%;
+    width: 14.51%;
+    top: 74.32%;
+    left: 43.26%;
+    font-size: 20px;
+    color:  #bdbdbd;
+  }
+  .crearCuenta {
+    top: calc(50% - 30px);
+    left: calc(50% - 90.5px);
+    width: 182px;
+    height: 60px;
+  }
+  .crearCuentaWrapper {
+    position: absolute;
+    height: 5.86%;
+    width: 26.88%;
+    top: 66.6%;
+    right: 36.6%;
+    bottom: 27.54%;
+    left: 36.53%;
+    border-radius: 25px;
+    background-color: #ff8200;
+    border: 1px solid black;
+    box-sizing: border-box;
+    font-size: 28px;
+    color: white;
+  }
+  .apellido,
+  .confirmarContrasea,
+  .contrasea,
+  .correoElectrnico,
+  .nombre,
+  .telfono {
+    position: absolute;
+    height: 4.69%;
+    width: 20.9%;
+    top: 39.26%;
+    left: 53.19%;
+    display: flex;
+    align-items: center;
+  }
+  .apellido,
+  .confirmarContrasea,
+  .contrasea,
+  .correoElectrnico,
+  .nombre {
+    top: 51.37%;
+    left: 19.44%;
+  }
+  .apellido,
+  .confirmarContrasea,
+  .correoElectrnico,
+  .nombre {
+    left: 53.19%;
+  }
+  .apellido,
+  .correoElectrnico,
+  .nombre {
+    top: 39.26%;
+    left: 19.44%;
+  }
+  .apellido,
+  .nombre {
+    top: 27.15%;
+    left: 53.19%;
+  }
+  .nombre {
+    left: 19.44%;
+  }
+  .registroItem {
+    position: absolute;
+    height: 5.86%;
+    width: 27.08%;
+    top: 55.66%;
+    right: 19.72%;
+    bottom: 38.48%;
+    left: 53.19%;
+    border-radius: 10px;
+    background-color: rgba(217, 217, 217, 0.1);
+    border: 3px solid #ffdcb8;
+    box-sizing: border-box;
+  }
+  .iniciarSesin,
+  .regstrate {
+    position: absolute;
+    top: 178px;
+    font-size: 48px;
+    font-family: var(--font-roboto-condensed);
+  }
+  .iniciarSesin {
+    left: calc(50% + 20px);
+    color: #bdbdbd;
+    cursor: pointer;
+  }
+  .regstrate {
+    left: 499px;
+  }
+  .registroInner {
+    position: absolute;
+    top: 233px;
+    left: 486px;
+    width: 228px;
+    height: 1px;
+    object-fit: contain;
+  }
+  .rectangleDiv,
+  .registroChild1,
+  .registroChild2,
+  .registroChild3,
+  .registroChild4 {
+    position: absolute;
+    height: 5.86%;
+    width: 27.08%;
+    top: 31.84%;
+    right: 53.47%;
+    bottom: 62.3%;
+    left: 19.44%;
+    border-radius: 10px;
+    background-color: rgba(217, 217, 217, 0.1);
+    border: 3px solid #ffdcb8;
+    box-sizing: border-box;
+  }
+  .registroChild1,
+  .registroChild2,
+  .registroChild3,
+  .registroChild4 {
+    top: 43.95%;
+    bottom: 50.2%;
+  }
+  .registroChild2,
+  .registroChild3,
+  .registroChild4 {
+    top: 31.84%;
+    right: 19.72%;
+    bottom: 62.3%;
+    left: 53.19%;
+  }
+  .registroChild3,
+  .registroChild4 {
+    top: 55.66%;
+    right: 53.47%;
+    bottom: 38.48%;
+    left: 19.44%;
+  }
+  .registroChild4 {
+    top: 43.95%;
+    right: 19.72%;
+    bottom: 50.2%;
+    left: 53.19%;
+  }
+  .div,
+  .div1,
+  .estudiantecorreounimeteduv {
+    position: absolute;
+    height: 4.69%;
+    width: 30.21%;
+    top: 44.53%;
+    left: 21.04%;
+    font-size: 20px;
+    color: #bdbdbd;
+    display: flex;
+    align-items: center;
+  }
+  .div,
+  .div1 {
+    top: 56.84%;
+    left: 21.39%;
+  }
+  .div1 {
+    left: 55.35%;
+  }
+  .ioncloseCircleSharpIcon {
+    position: absolute;
+    top: 177px;
+    left: 1156px;
+    width: 56px;
+    height: 56px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .registro {
+    width: 1440px;
+    background-color: #ff8200;
+    max-width: 100%;
+    height: 1024px;
+    overflow: hidden;
+    text-align: left;
+    font-size: 24px;
+    color: black;
+    font-family: var(--font-roboto);
+  }
+  

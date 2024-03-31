@@ -1,0 +1,56 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #ececec;
+}
+
+.mainContainer{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: -200px;
+}
+
+.commentFlexbox{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.commentText{
+    margin: 12px 0;
+    font: 1.15rem;
+    font-weight: 600;
+
+}
+
+.inputBox{
+    height: 75px;
+    width: 465px;
+    background-color: #ffffff;
+}
+
+.commentButton{
+    height: 40px;
+    width: 80px;
+    background-color: #FF8200;
+    color: white;
+    font-size: 1.05rem;
+    margin-top: 10px;
+    border-radius: 5px;
+    border-style: none;
+    cursor: pointer;
+
+}
+
+.commentContainer{
+    height: 75px;
+    width: 465px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin: 10px 0;
+    word-break: break-all;
+}

@@ -2,10 +2,13 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth, googleProvider, db, signInWithPopup, createUserWithEmailAndPassword, collection, query, where, getDocs, getDoc, facebookProvider } from '../firebase';
 import { setDoc, doc } from 'firebase/firestore';
-import './Registro.css';
+import styles from'./Registro.module.css';
 import { MessageContext } from '../MessageContext';
 import { updateProfile } from 'firebase/auth';
 import NavbarRegistro from '../components/NavbarRegistro';
+
+import Google from '../images/google.png'
+import Facebook from '../images/facebook.png'
 
 
 function Registro() {
@@ -146,22 +149,32 @@ function Registro() {
 
   return (
       <MessageContext.Provider value={{ message, setMessage }}>
-        <div className="register-form">
-          <NavbarRegistro/>
-          <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value.toLowerCase())}/>
-          <input type="text" placeholder="Last Name" value={lastName}
-                 onChange={(e) => setLastName(e.target.value.toLowerCase())}/>
-          <input type="text" placeholder="Email" value={email}
-                 onChange={(e) => setEmail(e.target.value.toLowerCase())}/>
-          <input type="text" placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value)}/>
-          <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-          <input type="password" placeholder="Confirm Password" value={confirmPassword}
-                 onChange={(e) => setConfirmPassword(e.target.value)}/>
-          <button onClick={handleSubmit}>Register</button>
-          <button onClick={handleGoogleSignIn}>Register with Google</button>
-          <button onClick={handleFacebookSignIn}>Register with Facebook</button>
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
-          {successMessage && <p className="success-message">You have successfully registered!</p>}
+        <div className={styles.registro}>
+          <div className= {styles.registroChild}>
+            <NavbarRegistro/>
+            <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value.toLowerCase())}/>
+            <input type="text" placeholder="Last Name" value={lastName}
+                  onChange={(e) => setLastName(e.target.value.toLowerCase())}/>
+            <input type="text" placeholder="Email" value={email}
+                  onChange={(e) => setEmail(e.target.value.toLowerCase())}/>
+            <input type="text" placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value)}/>
+            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+            <input type="password" placeholder="Confirm Password" value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}/>
+            <button onClick={handleSubmit}>Register</button>
+            <img
+                className={styles.flatColorIconsgoogle}
+                src={Google}
+                onClick={handleGoogleSignIn}
+            />
+            <img
+                className={styles.frameIcon}
+                src={Facebook}
+                onClick={handleFacebookSignIn}
+            />
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            {successMessage && <p className="success-message">You have successfully registered!</p>}
+            </div>
         </div>
       </MessageContext.Provider>
   );
