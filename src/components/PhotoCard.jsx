@@ -13,7 +13,7 @@ function PhotoCard({ title, description, image, isReversed , btnMessage, link}) 
         <div className="feature-content">
           <h2 className="feature-title">{title}</h2>
           <p className="feature-description">{description}</p>
-          <Button link>{btnMessage}</Button>
+          <Button className={title} link ={link}>{btnMessage}</Button>
         </div>
       </div>
       <style jsx>{`
