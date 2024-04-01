@@ -100,8 +100,11 @@ const GroupPage = () => {
                         btnMessage=''
                         link = ''
                     />
-
+                    {user && user.role === 'admin' && (
+                        <button onClick={() => deleteGroup(grupo.id, grupo.agrupaciones)}>Delete Group</button>
+                    )}
                  </div>
+                 
             )}
             {user && user.role === 'admin' && (
                 <div>
