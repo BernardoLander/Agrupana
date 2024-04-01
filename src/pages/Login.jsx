@@ -23,12 +23,26 @@ function Login() {
             return;
         }
 
+        const estudiante = "@correo.unimet.edu.ve";
+        const admin = "@unimet.edu.ve";
+
+        if (!username.includes(estudiante) && !username.includes(admin)) {
+            setError('Invalid email. Please enter a valid university email.');
+            return;
+        }
+
         try {
             const userCredential = await signInWithEmailAndPassword(auth, username, password);
             const userDoc = await getDoc(doc(db, 'Usuarios', userCredential.user.uid));
             if (!userDoc.exists()) {
                 setError('User not found in Firestore.');
                 return;
+            }
+
+            // Check if the user is an admin
+            if (userCredential.user.email.includes(admin)) {
+                // Handle admin login
+                // You can redirect the admin to a different page or set a different state
             }
 
             navigate('/');
@@ -39,7 +53,7 @@ function Login() {
             } else if (error.code === 'auth/wrong-password') {
                 setError('Incorrect password.');
             } else {
-                setError('Invalid credentials. Please try again.');
+                setError('An error occurred. Please try again.');
             }
         }
     };
