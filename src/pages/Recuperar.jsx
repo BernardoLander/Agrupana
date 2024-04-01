@@ -6,7 +6,6 @@ const Recuperar = () => {
     const [correo, setCorreo] = useState('')
     function enviarcorreo(correo) {
       sendPasswordResetEmail(correo)
-        
     }
   return (
     <div>
