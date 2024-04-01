@@ -10,6 +10,7 @@ import Donacion from './pages/Donacion';
 import CreateAgrupation from './pages/CreateAgrupation';
 import CreateGroup from "./pages/CreateGroup.jsx";
 import EditAgrupation from "./pages/EditAgrupation.jsx";
+import Recuperar from './pages/Recuperar';
 
 export const router = createBrowserRouter([
 
@@ -56,6 +57,10 @@ export const router = createBrowserRouter([
     {
         path: '/edit-agrupation/:agrupacionId',
         element: <EditAgrupation/>
+    },
+    {
+        path: '/recuperar',
+        element: <Recuperar/>
     }
 
 
