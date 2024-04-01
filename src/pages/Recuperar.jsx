@@ -1,17 +1,27 @@
 import React, { useState } from 'react'
 import { auth } from "../firebase";
 import { sendPasswordResetEmail } from "firebase/auth";
+// import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
 const Recuperar = () => {
-    const [correo, setCorreo] = useState('')
-    function enviarcorreo(correo) {
-      sendPasswordResetEmail(correo)
-    }
+  const [email , setEmail]= useState("")
+  // const auth = getAuth();
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      // Password reset email sent!
+      // ..
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // ..
+    });
   return (
     <div>
         recuperar
-        <input type="text" placeholder='Ingrese tu correo electronico' value={correo} onChange={(e)=>setCorreo(e.target.value)} />
-        <button type='button' onClick={enviarcorreo}>Cambiar</button>
+        <input type="text" placeholder='Ingrese tu correo electronico' value={email} onChange={(e)=>setEmail(e.target.value)} />
+        <button type='button' onClick={sendPasswordResetEmail}>Cambiar</button>
+        <h2>{email}</h2>
 
     </div>
   )
