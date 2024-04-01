@@ -4,6 +4,7 @@ import Registro from './pages/Registro'
 import GroupPage from './pages/GroupPage';
 import PerfilUsuario from './pages/PerfilUsuario';
 import HomePage from './pages/HomePage';
+import  Recuperar  from "./pages/Recuperar";
 
 export const router = createBrowserRouter([
 
@@ -29,6 +30,12 @@ export const router = createBrowserRouter([
     {
         path:'/agrupaciones',
         element: <GroupPage/>
+
+    },
+    {
+        path:'/cambiar',
+        element: <Recuperar/> 
     }
+
 //falta home
 ])
