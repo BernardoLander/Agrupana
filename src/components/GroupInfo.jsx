@@ -55,7 +55,7 @@ function GroupInfo( {group}) {
           }
   
           .participantes-card {
-            background-color: rgba(255, 130, 0, 0.66);
+            background-color: rgba(255, 130, 0, 1);
             display: flex;
             width: 100%;
             flex-grow: 1;
@@ -70,7 +70,8 @@ function GroupInfo( {group}) {
           .participantes-title {
             font-family: Roboto Condensed, -apple-system, Roboto, Helvetica, sans-serif;
             align-self: start;
-            margin-left: 12px;
+            margin-left: 5px;
+            background-color: rgba(255, 130, 0, 0.66);
           }
   
           @media (max-width: 991px) {
@@ -86,17 +87,20 @@ function GroupInfo( {group}) {
             align-items: flex-start;
             gap: 20px;
             justify-content: space-between;
+            background-color: rgba(255, 130, 0, 0.66);
           }
   
           @media (max-width: 991px) {
             .participantes-info {
               margin-top: 40px;
+              background-color: rgba(255, 130, 0, 0.66);
             }
           }
   
           .participantes-count {
             font-family: Roboto Condensed, -apple-system, Roboto, Helvetica, sans-serif;
             align-self: start;
+            background-color:  rgba(255, 130, 0, 0.66);
           }
   
           .participantes-image {
@@ -107,6 +111,7 @@ function GroupInfo( {group}) {
             align-self: end;
             margin-top: 23px;
             max-width: 100%;
+            background-color:  rgba(255, 130, 0, 0.66);
           }
   
           .contactanos-card {
@@ -126,18 +131,20 @@ function GroupInfo( {group}) {
           @media (max-width: 991px) {
             .contactanos-card {
               white-space: initial;
+              background-color:white;
             }
           }
   
           .contactanos-title {
             font-family: Roboto Condensed, -apple-system, Roboto, Helvetica, sans-serif;
             align-self: start;
-            margin-left: 12px;
+            margin-left: 5px;
+            background-color: white;
           }
   
           @media (max-width: 991px) {
             .contactanos-title {
-              margin-left: 10px;
+              margin-left: 5px;
             }
           }
   
@@ -150,6 +157,7 @@ function GroupInfo( {group}) {
             z-index: 10;
             margin-top: 68px;
             max-width: 100%;
+            background-color: white;
           }
   
           @media (max-width: 991px) {
@@ -159,7 +167,7 @@ function GroupInfo( {group}) {
           }
   
           .ranking-card {
-            background-color: rgba(255, 130, 0, 0.66);
+            background-color: rgba(255, 130, 0, 1);
             display: flex;
             flex-grow: 1;
             flex-direction: column;
@@ -176,19 +184,21 @@ function GroupInfo( {group}) {
             .ranking-card {
               white-space: initial;
               padding: 0 20px;
+              background-color: rgba(255, 130, 0, 0.66);
             }
           }
   
           .ranking-title {
             font-family: Roboto Condensed, -apple-system, Roboto, Helvetica, sans-serif;
+            background-color: rgba(255, 130, 0, 0.66);
           }
   
-          .ranking-image {
-            aspect-ratio: 3.7;
+          .ranking-star {
             object-fit: auto;
             object-position: center;
             width: 236px;
             margin-top: 36px;
+            background-color: rgba(255, 130, 0, 0.66);
           }
         `}</style>
       </>

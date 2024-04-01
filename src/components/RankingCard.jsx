@@ -8,7 +8,7 @@ const RankingCard = ({ group }) => {
   return (
     <div className="ranking-card">
       <div className="ranking-title">RANKING</div>
-      <StarRate rating={rating} />
+      <StarRate className ="ranking-star" rating={rating} />
     </div>
   );
 };
