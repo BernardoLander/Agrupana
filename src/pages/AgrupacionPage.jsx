@@ -1,40 +1,52 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-import agrupacionesData from '../data/agrupacionesData.json'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Comments from '../components/Comments';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase'; // make sure to import your firebase instance
 
 const AgrupacionPage = () => {
     const { agrupacionId } = useParams();
-    // Buscar la agrupación por su ID
-    const agrupacion = agrupacionesData.find(agrupacion => agrupacion.ID === String(agrupacionId));
-  // Verifica si agrupacionesData es null o undefined antes de usarlo
-  if (!agrupacion) {
-    return <p>Loading...</p>;
-  }
+    const [agrupacion, setAgrupacion] = useState(null);
 
+    useEffect(() => {
+        const fetchAgrupacion = async () => {
+            const agrupacionDoc = doc(db, 'Agrupaciones', agrupacionId);
+            const agrupacionData = await getDoc(agrupacionDoc);
+            if (agrupacionData.exists) {
+                setAgrupacion(agrupacionData.data());
+            } else {
+                console.log("No such document!");
+            }
+        };
 
-  return (
-    <div>
-        <Navbar/>
+        fetchAgrupacion();
+    }, [agrupacionId]);
+
+    if (!agrupacion) {
+        return <p>Loading...</p>;
+    }
+
+    return (
         <div>
-          <h1>{agrupacion.nombre}</h1>
-          <h2>Quienes Somos?</h2>
-          <p>{agrupacion.somos}</p>
-          <h2>Por qué pertenecer a {agrupacion.nombre}?</h2>
-          <p>{agrupacion.pertenecer}</p>
-          <p>Misión: {agrupacion.mision}</p>
-          <p>Visión: {agrupacion.vision}</p>
+            <Navbar/>
+            <div>
+                <h1>{agrupacion.nombre}</h1>
+                <h2>Quienes Somos?</h2>
+                <p>{agrupacion.somos}</p>
+                <h2>Por qué pertenecer a {agrupacion.nombre}?</h2>
+                <p>{agrupacion.pertenecer}</p>
+                <p>Misión: {agrupacion.mision}</p>
+                <p>Visión: {agrupacion.vision}</p>
+            </div>
+            <div>
+                <h2>Experiencia de los Estudiantes</h2>
+                <Comments/>
+            </div>
+            <Footer jsx="true" />
         </div>
-        <div>
-            <h2>Experiencia de los Estudiantes</h2>
-            <Comments/>
-        </div>
-        <Footer/>
-       
-    </div>
-  );
+    );
 }
 
 export default AgrupacionPage

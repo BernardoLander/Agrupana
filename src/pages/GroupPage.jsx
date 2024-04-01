@@ -1,53 +1,82 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import {Link} from 'react-router-dom'
-import agrupacionesData from '../data/agrupacionesData.json'
-import categoriaData from'../data/categoriaData.json'
+import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase'; // make sure to import your firebase instance
+import { useUser } from '../context/Usuariocontext';
 
 const GroupPage = () => {
-  const grupoArray = Object.values(categoriaData);
-  const [searchTerm, setSearchTerm]= useState('');
-  const [searchResults, setSearchResults]= useState(grupoArray);
-  const handleSearch = () => {
-      const results = grupoArray.filter(grupo => 
-          grupo.nombre.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      setSearchResults(results);
+    const { user } = useUser();
+    const [grupoArray, setGrupoArray] = useState([]);
+    const [searchTerm, setSearchTerm]= useState('');
+    const [searchResults, setSearchResults]= useState([]);
 
-  }
+    const fetchAgrupacionName = async (agrupacionId) => {
+        const agrupacionDoc = doc(db, 'Agrupaciones', agrupacionId);
+        const agrupacionData = await getDoc(agrupacionDoc);
+        if (agrupacionData.exists()) {
+            return agrupacionData.data().nombre;
+        } else {
+            console.log(`No document exists with the id ${agrupacionId}`);
+            return null;
+        }
+    };
 
-  return (
-    <div>
-  
-        <Navbar/>
-        <h1>Agrupaciones Estudiantiles</h1>
+    useEffect(() => {
+        const fetchGroups = async () => {
+            const groupsCollection = collection(db, 'Categoria');
+            const groupDocs = await getDocs(groupsCollection);
+            const groups = await Promise.all(groupDocs.docs.map(async doc => {
+                const data = doc.data();
+                const agrupacionNames = await Promise.all(data.agrupaciones.map(fetchAgrupacionName));
+                const validAgrupacionNames = agrupacionNames.filter(name => name !== null);
+                const validAgrupaciones = data.agrupaciones.slice(0, validAgrupacionNames.length);
+                return { id: doc.id, ...data, agrupaciones: validAgrupaciones, agrupacionNames: validAgrupacionNames };
+            }));
+            setGrupoArray(groups);
+            setSearchResults(groups);
+        };
+
+        fetchGroups();
+    }, []);
+
+    const handleSearch = () => {
+        const results = grupoArray.filter(grupo =>
+            grupo.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setSearchResults(results);
+    }
+
+    return (
         <div>
-          <input 
-            type='text'
-            placeholder='Buscar Agrupación Estudiantil'
-            value = {searchTerm}
-            onChange={(e)=> setSearchTerm(e.target.value)}
-          />
-          <button onClick={handleSearch}>Buscar</button>
-          {searchResults.map((grupo)=>
-            <div key= {grupo.ID}>
-              <h3>{grupo.nombre}</h3>
-              <ul>
-                {grupo.agrupaciones.map(agrupacionId => {
-                  const agrupacion = agrupacionesData.find(agrupacion => agrupacion.ID === agrupacionId);
-                  return <li key={agrupacionId}>
-                    <Link to={`/agrupacion/${agrupacionId}`}>{agrupacion ? agrupacion.nombre : 'Agrupación no encontrada'}</Link>
-                    
-                    </li>;
-                })}
-    
-              </ul>
+            <Navbar/>
+            <h1>Agrupaciones Estudiantiles</h1>
+            <div>
+                <input
+                    type='text'
+                    placeholder='Buscar Agrupación Estudiantil'
+                    value = {searchTerm}
+                    onChange={(e)=> setSearchTerm(e.target.value)}
+                />
+                <button onClick={handleSearch}>Buscar</button>
+                {searchResults.map((grupo, index)=>
+                    <div key= {index}>
+                        <h3>{grupo.nombre}</h3>
+                        <ul>
+                            {grupo.agrupacionNames.map((name, index) =>
+                                <li key={`${grupo.ID}-${index}`}>
+                                    <Link to={`/agrupacion/${grupo.agrupaciones[index]}`}>{name}</Link>
+                                </li>
+                            )}
+                        </ul>
+                    </div>
+                )}
             </div>
-          )}
-        </div>        
-  
-    </div>
-  )
+            {user && user.role === 'admin' && (
+                <Link to="/create-agrupation"><button>Create Agrupation</button></Link>
+            )}
+        </div>
+    );
 }
 
 export default GroupPage
