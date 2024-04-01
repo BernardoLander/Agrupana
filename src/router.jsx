@@ -6,7 +6,6 @@ import PerfilUsuario from './pages/PerfilUsuario';
 import HomePage from './pages/HomePage';
 import AdditionalInfo from './pages/additional-info';
 import AgrupacionPage from './pages/AgrupacionPage';
-import CreateAgrupation from './pages/CreateAgrupation';
 
 export const router = createBrowserRouter([
 
@@ -37,10 +36,6 @@ export const router = createBrowserRouter([
     {
         path: '/agrupacion/:agrupacionId',
         element: <AgrupacionPage/>
-    },
-    {
-        path: '/create-agrupation',
-        element: <CreateAgrupation/>
     }
 //falta home
 ])
