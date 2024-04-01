@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Comments from '../components/Comments';
@@ -9,8 +9,8 @@ import Carousel from '../components/Carousel';
 import styles from './AgrupacionPage.module.css'
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase'; // make sure to import your firebase instance
-import Carousel from '../components/Carousel';
 import GroupInfo from '../components/GroupInfo';
+
 
 
 const AgrupacionPage = () => {
