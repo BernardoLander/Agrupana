@@ -3,6 +3,8 @@ import Navbar from '../components/Navbar'
 import {Link} from 'react-router-dom'
 import agrupacionesData from '../data/agrupacionesData.json'
 import categoriaData from'../data/categoriaData.json'
+import Footer from '../components/Footer'
+import PhotoCard from '../components/PhotoCard'
 
 const GroupPage = () => {
   const grupoArray = Object.values(categoriaData);
@@ -31,19 +33,25 @@ const GroupPage = () => {
           <button onClick={handleSearch}>Buscar</button>
           {searchResults.map((grupo)=>
             <div key= {grupo.ID}>
-              <h3>{grupo.nombre}</h3>
-              <ul>
-                {grupo.agrupaciones.map(agrupacionId => {
+              <PhotoCard
+                title={grupo.nombre}
+                description = {grupo.agrupaciones.map(agrupacionId => {
                   const agrupacion = agrupacionesData.find(agrupacion => agrupacion.ID === agrupacionId);
-                  return <li key={agrupacionId}>
+                  return (<li key={agrupacionId}>
                     <Link to={`/agrupacion/${agrupacionId}`}>{agrupacion ? agrupacion.nombre : 'Agrupación no encontrada'}</Link>
-                    </li>;
+                    </li>)
                 })}
-    
-              </ul>
+                isReversed={grupo?.ID % 2 === 0}
+                image= {grupo.imagen}
+                btnMessage=''
+                link = ''
+                color= {"ff8200"}
+              />
+              
             </div>
           )}
-        </div>        
+        </div>
+       <Footer></Footer>        
   
     </div>
   )
