@@ -38,9 +38,6 @@ const Navbar = () => {
             <Link className="nav-link" to='/agrupaciones'>Agrupaciones Estudiantiles</Link>
           </li>
         </div>
-        {user && user.role === 'admin' && (
-            <Link to="/create-agrupation"><button>Create Agrupation</button></Link>
-        )}
         {!user && (
           <>
             <Link className={styles.registrate} to='/registro'>Regístrate</Link>
