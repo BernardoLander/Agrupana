@@ -55,7 +55,55 @@ const Navbar = () => {
           </>
         )}
       </div>
+      <style jsx>{`
+      .navbar {
+        padding: 10px 20px;
+      }
 
+      .navbar-brand {
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-link {
+        font-size: 16px;
+        margin-right: 15px;
+      }
+
+      .headline {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logoAgrupana1 {
+        width: [width of your logo in pixels];
+        height: [height of your logo in pixels];
+      }
+
+      .inicioWrapper,
+      .agrupacionesWrapper {
+        list-style: none;
+        padding: 0;
+      }
+
+      .inicio,
+      .agrupaciones {
+        display: inline-block;
+      }
+
+      .groupIcon {
+        margin-right: 10px;
+      }
+
+      .registrate {
+        font-size: 16px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+      }
+      `}</style>
+    
     </nav>
 );
 };

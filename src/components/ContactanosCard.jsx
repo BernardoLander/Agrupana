@@ -6,6 +6,7 @@ const ContactanosCard = ({group}) => {
     return (
       <div className="contactanos-card">
         <div className="contactanos-title">CONTÁCTANOS</div>
+        <h2 className="group-contacto">{group.contacto}</h2>
         <img
           loading="lazy"
           src={contactImg}

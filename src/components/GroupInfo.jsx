@@ -141,6 +141,12 @@ function GroupInfo( {group}) {
             margin-left: 5px;
             background-color: white;
           }
+          .group-contacto{
+            font-family: Roboto Condensed, -apple-system, Roboto, Helvetica, sans-serif;
+            align-self: start;
+            background-color: white;
+            font-size: 10px;
+          }
   
           @media (max-width: 991px) {
             .contactanos-title {

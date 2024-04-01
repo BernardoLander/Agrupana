@@ -53,13 +53,13 @@ function PhotoCard({ title, description, image, isReversed, hasButton, btnMessag
         
         .feature-title {
           font: Roboto Condensed, -apple-system, Roboto, Helvetica, sans-serif;
-          font-size: larger;
+          font-size: 50px;
         }
         
         .feature-description {
           margin-top: 37px;
           font: Roboto, sans-serif;
-          font-size: smaller;
+          font-size: 25px;
         }
         
         @media (max-width: 991px) {
