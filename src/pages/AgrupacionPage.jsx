@@ -5,6 +5,9 @@ import Footer from '../components/Footer';
 import Comments from '../components/Comments';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase'; // make sure to import your firebase instance
+import Carousel from '../components/Carousel';
+import GroupInfo from '../components/GroupInfo';
+
 
 const AgrupacionPage = () => {
     const { agrupacionId } = useParams();
@@ -30,23 +33,25 @@ const AgrupacionPage = () => {
 
     return (
         <div>
-            <Navbar/>
+              <Navbar/>
             <div>
                 <h1>{agrupacion.nombre}</h1>
                 <h2>Quienes Somos?</h2>
                 <p>{agrupacion.somos}</p>
                 <h2>Por qué pertenecer a {agrupacion.nombre}?</h2>
                 <p>{agrupacion.pertenecer}</p>
-                <p>Misión: {agrupacion.mision}</p>
-                <p>Visión: {agrupacion.vision}</p>
-            </div>
-            <div>
-                <h2>Experiencia de los Estudiantes</h2>
-                <Comments/>
+                <Carousel json={agrupacion}
+                />
+                <GroupInfo group = {agrupacion}/>
+        
+                <div>
+                    <h2>Experiencia de los Estudiantes</h2>
+                    <Comments/>
             </div>
             <Footer jsx="true" />
+            </div>
         </div>
     );
 }
 
-export default AgrupacionPage
+export default AgrupacionPage;
