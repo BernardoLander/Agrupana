@@ -39,6 +39,9 @@ const AgrupacionPage = () => {
     if (!agrupacion) {
         return <p>Loading...</p>;
     }
+    const pagesDonacion = async () => {
+        navigate('/donacion')
+      }
 
     return (
         <div>
@@ -113,6 +116,7 @@ const AgrupacionPage = () => {
         
                 <div>
                     <h2>Experiencia de los Estudiantes</h2>
+                    <button type='button' onClick={pagesDonacion}>Hacer una donacion</button>
                     <Comments/>
             </div>
             <Footer jsx="true" />
