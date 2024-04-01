@@ -11,6 +11,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase'; // make sure to import your firebase instance
 
 const AgrupacionPage = () => {
+  const navigate = useNavigate();
     const { agrupacionId } = useParams();
     const [agrupacion, setAgrupacion] = useState(null);
 
