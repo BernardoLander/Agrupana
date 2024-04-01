@@ -9,24 +9,31 @@ import Carousel from '../components/Carousel';
 import styles from './AgrupacionPage.module.css'
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase'; // make sure to import your firebase instance
+import Carousel from '../components/Carousel';
+import GroupInfo from '../components/GroupInfo';
+
 
 const AgrupacionPage = () => {
   const navigate = useNavigate();
     const { agrupacionId } = useParams();
-    const [agrupacion, setAgrupacion] = useState(null);
+    const [agrupacion, setAgrupation] = useState(null); // Ensure setAgrupation is defined here
 
     useEffect(() => {
-        const fetchAgrupacion = async () => {
-            const agrupacionDoc = doc(db, 'Agrupaciones', agrupacionId);
-            const agrupacionData = await getDoc(agrupacionDoc);
-            if (agrupacionData.exists) {
-                setAgrupacion(agrupacionData.data());
+        const fetchAgrupation = async () => {
+            const agrupationDoc = doc(db, 'Agrupaciones', agrupacionId);
+            const agrupationData = await getDoc(agrupationDoc);
+            if (agrupationData.exists()) {
+                console.log('Fetched data:', agrupationData.data()); // Log the fetched data
+                setAgrupation(agrupationData.data()); // Ensure setAgrupation is used here
             } else {
-                console.log("No such document!");
+                console.log(`No document exists with the id ${agrupacionId}`);
+                setAgrupation(null); // Ensure setAgrupation is used here
             }
         };
 
-        fetchAgrupacion();
+        fetchAgrupation().catch(error => {
+            console.log('Error fetching agrupation:', error); // Log any errors that occur
+        });
     }, [agrupacionId]);
 
     if (!agrupacion) {
@@ -35,7 +42,7 @@ const AgrupacionPage = () => {
 
     return (
         <div>
-            <Navbar/>
+              <Navbar/>
             <div>
                 <h1>{agrupacion.nombre}</h1>
                 <img src={agrupacion.logo}/>
@@ -44,16 +51,18 @@ const AgrupacionPage = () => {
                 <img src={agrupacion.imagen}/>
                 <h2>Por qué pertenecer a {agrupacion.nombre}?</h2>
                 <p>{agrupacion.pertenecer}</p>
-                <p>Misión: {agrupacion.mision}</p>
-                <p>Visión: {agrupacion.vision}</p>
-            </div>
-            <div>
-                <h2>Experiencia de los Estudiantes</h2>
-                <Comments/>
+                <Carousel json={agrupacion}
+                />
+                <GroupInfo group = {agrupacion}/>
+        
+                <div>
+                    <h2>Experiencia de los Estudiantes</h2>
+                    <Comments/>
             </div>
             <Footer jsx="true" />
+            </div>
         </div>
     );
 }
 
-export default AgrupacionPage
+export default AgrupacionPage;
