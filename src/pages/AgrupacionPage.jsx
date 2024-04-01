@@ -1,17 +1,24 @@
 import React from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import agrupacionesData from '../data/agrupacionesData.json'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Comments from '../components/Comments';
 
 const AgrupacionPage = () => {
+  const navigate = useNavigate();
     const { agrupacionId } = useParams();
     // Buscar la agrupación por su ID
     const agrupacion = agrupacionesData.find(agrupacion => agrupacion.ID === String(agrupacionId));
   // Verifica si agrupacionesData es null o undefined antes de usarlo
   if (!agrupacion) {
     return <p>Loading...</p>;
+
+
+  }
+
+  const pagesDonacion = async () => {
+    navigate('/donacion')
   }
 
 
@@ -31,6 +38,7 @@ const AgrupacionPage = () => {
         </div>
         <div>
             <h2>Experiencia de los Estudiantes</h2>
+            <button type='button' onClick={pagesDonacion}>Hacer una donacion</button>
             <Comments/>
         </div>
         <Footer/>
