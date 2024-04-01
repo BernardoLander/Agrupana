@@ -10,7 +10,7 @@ import Donacion from './pages/Donacion';
 import CreateAgrupation from './pages/CreateAgrupation';
 import CreateGroup from "./pages/CreateGroup.jsx";
 import EditAgrupation from "./pages/EditAgrupation.jsx";
-import Recuperar from './pages/Recuperar';
+import  Recuperar  from "./pages/Recuperar.jsx";
 
 export const router = createBrowserRouter([
 
