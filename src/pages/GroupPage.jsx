@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import { collection, getDocs, doc, getDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../firebase'; // make sure to import your firebase instance
 import { useUser } from '../context/Usuariocontext';
-import PhotoCard from '../components/PhotoCard'
+
 const GroupPage = () => {
     const { user } = useUser();
     const [grupoArray, setGrupoArray] = useState([]);
@@ -68,10 +68,7 @@ const GroupPage = () => {
 
     return (
         <div>
-            <div>
             <Navbar/>
-            </div>
-
             <h1>Agrupaciones Estudiantiles</h1>
             <div>
                 <input
@@ -81,26 +78,6 @@ const GroupPage = () => {
                     onChange={(e)=> setSearchTerm(e.target.value)}
                 />
                 <button onClick={handleSearch}>Buscar</button>
-<<<<<<< HEAD
-                {searchResults.map((grupo, index)=>
-                    <div key= {index}>
-                        <PhotoCard 
-                            title={grupo.nombre}
-                            description = {grupo.agrupacionNames.map((name, index) =>
-                                <li key={`${grupo.ID}-${index}`}>
-                                    <Link to={`/agrupacion/${grupo.agrupaciones[index]}`}>{name}</Link>
-                                </li>
-                            )}
-                            isReversed={grupo.ID % 2 === 0}
-                            image = {grupo.imagen}
-                            btnMessage=''
-                            link = ''
-                        />
-                        
-                    </div>
-                )}
-=======
->>>>>>> santiago
             </div>
             {searchResults.map((grupo, index)=>
                 <div key= {index}>
