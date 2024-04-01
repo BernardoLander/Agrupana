@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import { collection, getDocs, doc, getDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../firebase'; // make sure to import your firebase instance
 import { useUser } from '../context/Usuariocontext';
+import PhotoCard from '../components/PhotoCard';
 
 const GroupPage = () => {
     const { user } = useUser();
@@ -81,9 +82,9 @@ const GroupPage = () => {
             </div>
             {searchResults.map((grupo, index)=>
                 <div key= {index}>
-                    <h3>{grupo.nombre}</h3>
-                    <ul>
-                        {grupo.agrupacionNames.map((name, index) =>
+                    <PhotoCard
+                        title={grupo.nombre}
+                        description={grupo.agrupacionNames.map((name, index) =>
                             <li key={`${grupo.ID}-${index}`}>
                                 <Link to={`/agrupacion/${grupo.agrupaciones[index]}`}>{name}</Link>
                                 {user && user.role === 'admin' && (
@@ -94,11 +95,13 @@ const GroupPage = () => {
                                 )}
                             </li>
                         )}
-                    </ul>
-                    {user && user.role === 'admin' && (
-                        <button onClick={() => deleteGroup(grupo.id, grupo.agrupaciones)}>Delete Group</button>
-                    )}
-                </div>
+                        isReversed={grupo?.ID % 2 ===0}
+                        image = {grupo.imagen}
+                        btnMessage=''
+                        link = ''
+                    />
+
+                 </div>
             )}
             {user && user.role === 'admin' && (
                 <div>
