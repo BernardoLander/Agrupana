@@ -11,20 +11,24 @@ import GroupInfo from '../components/GroupInfo';
 
 const AgrupacionPage = () => {
     const { agrupacionId } = useParams();
-    const [agrupacion, setAgrupacion] = useState(null);
+    const [agrupacion, setAgrupation] = useState(null); // Ensure setAgrupation is defined here
 
     useEffect(() => {
-        const fetchAgrupacion = async () => {
-            const agrupacionDoc = doc(db, 'Agrupaciones', agrupacionId);
-            const agrupacionData = await getDoc(agrupacionDoc);
-            if (agrupacionData.exists) {
-                setAgrupacion(agrupacionData.data());
+        const fetchAgrupation = async () => {
+            const agrupationDoc = doc(db, 'Agrupaciones', agrupacionId);
+            const agrupationData = await getDoc(agrupationDoc);
+            if (agrupationData.exists()) {
+                console.log('Fetched data:', agrupationData.data()); // Log the fetched data
+                setAgrupation(agrupationData.data()); // Ensure setAgrupation is used here
             } else {
-                console.log("No such document!");
+                console.log(`No document exists with the id ${agrupacionId}`);
+                setAgrupation(null); // Ensure setAgrupation is used here
             }
         };
 
-        fetchAgrupacion();
+        fetchAgrupation().catch(error => {
+            console.log('Error fetching agrupation:', error); // Log any errors that occur
+        });
     }, [agrupacionId]);
 
     if (!agrupacion) {

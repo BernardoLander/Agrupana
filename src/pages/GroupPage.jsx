@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import {Link} from 'react-router-dom'
-import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
+import { collection, getDocs, doc, getDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../firebase'; // make sure to import your firebase instance
 import { useUser } from '../context/Usuariocontext';
 
@@ -22,21 +22,21 @@ const GroupPage = () => {
         }
     };
 
-    useEffect(() => {
-        const fetchGroups = async () => {
-            const groupsCollection = collection(db, 'Categoria');
-            const groupDocs = await getDocs(groupsCollection);
-            const groups = await Promise.all(groupDocs.docs.map(async doc => {
-                const data = doc.data();
-                const agrupacionNames = await Promise.all(data.agrupaciones.map(fetchAgrupacionName));
-                const validAgrupacionNames = agrupacionNames.filter(name => name !== null);
-                const validAgrupaciones = data.agrupaciones.slice(0, validAgrupacionNames.length);
-                return { id: doc.id, ...data, agrupaciones: validAgrupaciones, agrupacionNames: validAgrupacionNames };
-            }));
-            setGrupoArray(groups);
-            setSearchResults(groups);
-        };
+    const fetchGroups = async () => {
+        const groupsCollection = collection(db, 'Categoria');
+        const groupDocs = await getDocs(groupsCollection);
+        const groups = await Promise.all(groupDocs.docs.map(async doc => {
+            const data = doc.data();
+            const agrupacionNames = await Promise.all(data.agrupaciones.map(fetchAgrupacionName));
+            const validAgrupacionNames = agrupacionNames.filter(name => name !== null);
+            const validAgrupaciones = data.agrupaciones.slice(0, validAgrupacionNames.length);
+            return { id: doc.id, ...data, agrupaciones: validAgrupaciones, agrupacionNames: validAgrupacionNames };
+        }));
+        setGrupoArray(groups);
+        setSearchResults(groups);
+    };
 
+    useEffect(() => {
         fetchGroups();
     }, []);
 
@@ -46,6 +46,25 @@ const GroupPage = () => {
         );
         setSearchResults(results);
     }
+
+    const deleteGroup = async (groupId, agrupaciones) => {
+        const groupDoc = doc(db, 'Categoria', groupId);
+        await deleteDoc(groupDoc);
+
+        // Delete all agrupations associated with the group
+        for (const agrupacionId of agrupaciones) {
+            const agrupacionDoc = doc(db, 'Agrupaciones', agrupacionId);
+            await deleteDoc(agrupacionDoc);
+        }
+
+        // Fetch the groups again to update the UI
+        fetchGroups();
+    };
+    const deleteAgrupation = async (agrupacionId) => {
+        const agrupationDoc = doc(db, 'Agrupaciones', agrupacionId);
+        await deleteDoc(agrupationDoc);
+        fetchGroups();
+    };
 
     return (
         <div>
@@ -59,21 +78,33 @@ const GroupPage = () => {
                     onChange={(e)=> setSearchTerm(e.target.value)}
                 />
                 <button onClick={handleSearch}>Buscar</button>
-                {searchResults.map((grupo, index)=>
-                    <div key= {index}>
-                        <h3>{grupo.nombre}</h3>
-                        <ul>
-                            {grupo.agrupacionNames.map((name, index) =>
-                                <li key={`${grupo.ID}-${index}`}>
-                                    <Link to={`/agrupacion/${grupo.agrupaciones[index]}`}>{name}</Link>
-                                </li>
-                            )}
-                        </ul>
-                    </div>
-                )}
             </div>
+            {searchResults.map((grupo, index)=>
+                <div key= {index}>
+                    <h3>{grupo.nombre}</h3>
+                    <ul>
+                        {grupo.agrupacionNames.map((name, index) =>
+                            <li key={`${grupo.ID}-${index}`}>
+                                <Link to={`/agrupacion/${grupo.agrupaciones[index]}`}>{name}</Link>
+                                {user && user.role === 'admin' && (
+                                    <>
+                                        <Link to={`/edit-agrupation/${grupo.agrupaciones[index]}`}><button>Edit</button></Link>
+                                        <button onClick={() => deleteAgrupation(grupo.agrupaciones[index])}>Delete</button>
+                                    </>
+                                )}
+                            </li>
+                        )}
+                    </ul>
+                    {user && user.role === 'admin' && (
+                        <button onClick={() => deleteGroup(grupo.id, grupo.agrupaciones)}>Delete Group</button>
+                    )}
+                </div>
+            )}
             {user && user.role === 'admin' && (
-                <Link to="/create-agrupation"><button>Create Agrupation</button></Link>
+                <div>
+                    <Link to="/create-agrupation"><button>Create Agrupation</button></Link>
+                    <Link to="/create-group"><button>Create Group</button></Link>
+                </div>
             )}
         </div>
     );
