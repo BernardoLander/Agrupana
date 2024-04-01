@@ -95,7 +95,8 @@ const GroupPage = () => {
                                 )}
                             </li>
                         )}
-                        isReversed={grupo?.ID % 2 ===0}
+
+                        isReversed={index % 2  == 0}
                         image = {grupo.imagen}
                         btnMessage=''
                         link = ''
