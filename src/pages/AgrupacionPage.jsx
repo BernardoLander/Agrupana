@@ -7,41 +7,74 @@ import picvis from '../images/Vision.png'
 import picmis from '../images/Mision.png'
 import Carousel from '../components/Carousel';
 import styles from './AgrupacionPage.module.css'
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
 import { db } from '../firebase'; // make sure to import your firebase instance
 import GroupInfo from '../components/GroupInfo';
-
-
+import { useUser } from '../context/Usuariocontext';
 
 const AgrupacionPage = () => {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
+    const { user } = useUser();
     const { agrupacionId } = useParams();
-    const [agrupacion, setAgrupation] = useState(null); // Ensure setAgrupation is defined here
+    const [agrupacion, setAgrupation] = useState(null);
+    const [isAffiliated, setIsAffiliated] = useState(false);
+
+    const handleAfiliate = async () => {
+        if (isAffiliated) {
+            // Remove the user from the agrupation
+            await updateDoc(doc(db, 'Usuarios', user.uid), {
+                agrupaciones: arrayRemove(agrupacionId)
+            });
+            setIsAffiliated(false);
+        } else {
+            // Add the user to the agrupation
+            await updateDoc(doc(db, 'Usuarios', user.uid), {
+                agrupaciones: arrayUnion(agrupacionId)
+            });
+            setIsAffiliated(true);
+        }
+    };
 
     useEffect(() => {
         const fetchAgrupation = async () => {
             const agrupationDoc = doc(db, 'Agrupaciones', agrupacionId);
             const agrupationData = await getDoc(agrupationDoc);
             if (agrupationData.exists()) {
-                console.log('Fetched data:', agrupationData.data()); // Log the fetched data
-                setAgrupation(agrupationData.data()); // Ensure setAgrupation is used here
+                setAgrupation(agrupationData.data());
             } else {
                 console.log(`No document exists with the id ${agrupacionId}`);
-                setAgrupation(null); // Ensure setAgrupation is used here
+                setAgrupation(null);
+            }
+        };
+
+        const checkAffiliation = async () => {
+            const userDoc = doc(db, 'Usuarios', user.uid);
+            const userData = await getDoc(userDoc);
+            if (userData.exists() && userData.data().agrupaciones.includes(agrupacionId)) {
+                setIsAffiliated(true);
+            } else {
+                setIsAffiliated(false);
             }
         };
 
         fetchAgrupation().catch(error => {
-            console.log('Error fetching agrupation:', error); // Log any errors that occur
+            console.log('Error fetching agrupation:', error);
         });
-    }, [agrupacionId]);
+
+        if (user) {
+            checkAffiliation().catch(error => {
+                console.log('Error checking affiliation:', error);
+            });
+        }
+    }, [agrupacionId, user]);
 
     if (!agrupacion) {
         return <p>Loading...</p>;
     }
+
     const pagesDonacion = async () => {
         navigate('/donacion')
-      }
+    };
 
     return (
         <div>
@@ -110,16 +143,16 @@ const AgrupacionPage = () => {
                     margin: 0 auto;
                     }
                 `}</style>
-                <Carousel json={agrupacion}
-                />
+                <Carousel json={agrupacion}/>
                 <GroupInfo group = {agrupacion}/>
-        
+
                 <div>
                     <h2>Experiencia de los Estudiantes</h2>
                     <button type='button' onClick={pagesDonacion}>Hacer una donacion</button>
+                    <button onClick={handleAfiliate}>{isAffiliated ? 'Desafiliar' : 'Afiliate'}</button>
                     <Comments/>
-            </div>
-            <Footer jsx="true" />
+                </div>
+                <Footer jsx="true"/>
             </div>
         </div>
     );

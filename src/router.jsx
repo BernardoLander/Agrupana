@@ -11,12 +11,17 @@ import CreateAgrupation from './pages/CreateAgrupation';
 import CreateGroup from "./pages/CreateGroup.jsx";
 import EditAgrupation from "./pages/EditAgrupation.jsx";
 import  Recuperar  from "./pages/Recuperar.jsx";
+import UserAgrupationsPage from './pages/UserAgrupationsPage';
 
 export const router = createBrowserRouter([
 
     {
         path: '/login',
         element: <Login/>
+    },
+    {
+        path: '/user-agrupations',
+        element: <UserAgrupationsPage/>
     },
     {
         path: '/registro',

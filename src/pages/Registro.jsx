@@ -101,7 +101,8 @@ function Registro() {
         name: name,
         lastName: lastName,
         phone: phone,
-        role: email.includes(admin) ? 'admin' : 'user' // Add role to user document
+        role: email.includes(admin) ? 'admin' : 'user', // Add role to user document
+        agrupaciones: []
       };
       await setDoc(doc(db, 'Usuarios', userCredential.user.uid), userDoc);
 
@@ -122,7 +123,7 @@ function Registro() {
       const userDocRef = doc(db, 'Usuarios', user.uid);
       const userDoc = await getDoc(userDocRef);
       if (!userDoc.exists()) {
-        await setDoc(userDocRef, { uid: user.uid, email: user.email, name: user.displayName });
+        await setDoc(userDocRef, { uid: user.uid, email: user.email, name: user.displayName, agrupaciones: [] });
       }
 
       // Navigate to a new page where the user can enter their last name and phone number
@@ -139,7 +140,7 @@ function Registro() {
       const userDocRef = doc(db, 'Usuarios', user.uid);
       const userDoc = await getDoc(userDocRef);
       if (!userDoc.exists()) {
-        await setDoc(userDocRef, { uid: user.uid, email: user.email, name: user.displayName });
+        await setDoc(userDocRef, { uid: user.uid, email: user.email, name: user.displayName, agrupaciones: [] });
       }
 
       navigate('/');

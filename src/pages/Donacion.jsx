@@ -29,7 +29,7 @@ const Donacion = () => {
             
         return (
         <div>
-            <h1>el monto es {monto}</h1>
+            <h1>Donacion</h1>
             <input type="text" placeholder="Con cuanto desea contribuir" value={monto} onChange={handleChange}/>
             <select value={opcion} onChange={handleCambio}>
                 <option value="1">1$</option>
