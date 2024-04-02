@@ -7,6 +7,7 @@ import { getStorage } from 'firebase/storage';
 const firebaseConfig = {
   apiKey: "AIzaSyB3wuhBrlPEWaW_fg6vCONjNRkGs_Xp4fY",
   authDomain: "agrupana.firebaseapp.com",
+  databaseURL: "https://agrupana-default-rtdb.firebaseio.com",
   projectId: "agrupana",
   storageBucket: "agrupana.appspot.com",
   messagingSenderId: "478717383297",

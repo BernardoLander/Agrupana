@@ -3,6 +3,7 @@ import { useUser } from "../context/Usuariocontext";
 import { getDoc, doc } from 'firebase/firestore';
 import { db } from "../firebase";
 import { useNavigate } from 'react-router-dom';
+import styles from './UserAgrupationsPage.module.css';
 
 const UserAgrupationsPage = () => {
     const { user } = useUser();
@@ -13,7 +14,11 @@ const UserAgrupationsPage = () => {
         const fetchAgrupations = async () => {
             const userDoc = await getDoc(doc(db, 'Usuarios', user.uid));
             const userData = userDoc.data();
-            setAgrupaciones(userData.agrupaciones);
+            const agrupacionesData = await Promise.all(userData.agrupaciones.map(async (agrupacionId) => {
+                const agrupacionDoc = await getDoc(doc(db, 'Agrupaciones', agrupacionId));
+                return agrupacionDoc.data().nombre; // return the name of the agrupation
+            }));
+            setAgrupaciones(agrupacionesData);
         };
 
         fetchAgrupations();
@@ -24,14 +29,14 @@ const UserAgrupationsPage = () => {
     };
 
     return (
-        <div>
-            <h1>Mis Agrupaciones</h1>
-            <ul>
-                {agrupaciones.map((agrupacionId, index) => (
-                    <li key={index}>{agrupacionId}</li>
+        <div className={styles.container}>
+            <h1 className={styles.title}>Mis Agrupaciones</h1>
+            <ul className={styles.agrupationList}>
+                {agrupaciones.map((agrupacionName, index) => (
+                    <li key={index} className={styles.agrupationItem}>{agrupacionName}</li>
                 ))}
             </ul>
-            <button onClick={handleBackClick}>Back to Profile</button>
+            <button className={styles.backButton} onClick={handleBackClick}>Back to Profile</button>
         </div>
     );
 }

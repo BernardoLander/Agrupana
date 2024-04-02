@@ -70,29 +70,38 @@ const PerfilUsuario = () => {
       navigate('/user-agrupations');
   };
 
+  const handleHomeClick = () => {
+        navigate('/');
+    };
+
+
+
     return (
         <div className={styles.perfilDeUsuario}>
             <div className={styles.ttulo}>
                 <b>PERFIL DE USUARIO</b>
             </div>
-            <div className={styles.perfilDeUsuarioItem} />
+            <div className={styles.perfilDeUsuarioItem}/>
+            <button className={styles.homeButton} onClick={handleHomeClick}>Go to Home</button>
 
             <div className={styles.groupParent}>
                 <img className={styles.groupIcon1} src={Perfil}/>
-                <div className={styles.groupChild} />
+                <div className={styles.groupChild}/>
                 <div className={styles.correoDelUsuario}>{email}</div>
                 <div className={styles.nombreYApellido}>{name}, {lastName}</div>
                 <div className={styles.cambiarFotoWrapper}>CAMBIAR FOTO</div>
             </div>
 
             <div className={styles.nombre}>Nombre</div>
-            <input className={styles.perfilDeUsuarioInner} type="text" value={name} onChange={(e) => setName(e.target.value)}/>
+            <input className={styles.perfilDeUsuarioInner} type="text" value={name}
+                   onChange={(e) => setName(e.target.value)}/>
 
             <div className={styles.telfono}>Teléfono</div>
             <input className={styles.rectangleDiv} type="text" value={phone} disabled/>
 
             <div className={styles.apellido}>Apellido</div>
-            <input className={styles.perfilDeUsuarioChild1} type="text" value={lastName} onChange={(e) => setLastName(e.target.value)}/>
+            <input className={styles.perfilDeUsuarioChild1} type="text" value={lastName}
+                   onChange={(e) => setLastName(e.target.value)}/>
 
             <div className={styles.correoElectrnico}>Correo Electrónico</div>
             <input className={styles.perfilDeUsuarioChild2} type="email" value={email} disabled/>
@@ -101,8 +110,10 @@ const PerfilUsuario = () => {
             <div className={styles.cambiarContrasea}>Cambiar Contraseña</div>
             <div className={styles.perfilDeUsuarioChild}>
 
-                <div className={styles.perfilDeUsuarioChild} onClick={handleViewAgrupationsClick}>
-                    VER MIS AGRUPACIONES
+                <div className={styles.perfilDeUsuarioChild}>
+                    <div className={styles.agrupacionesText} onClick={handleViewAgrupationsClick}>
+                        VER MIS AGRUPACIONES
+                    </div>
                 </div>
                 {error && <p className="error-message">{error}</p>}
                 {successMessage && <p className="success-message">{successMessage}</p>}

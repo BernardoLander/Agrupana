@@ -48,6 +48,7 @@ function Login() {
             navigate('/');
             setLoggedIn(true);
         } catch (error) {
+            console.error(error);
             if (error.code === 'auth/user-not-found') {
                 setError('No user found with this email.');
             } else if (error.code === 'auth/wrong-password') {
@@ -98,43 +99,49 @@ function Login() {
         }
     };
 
+    const handleForgotPasswordClick = () => {
+        navigate('/recuperar');
+    };
+
     return (
         <div className={styles.iniciarSesin}>
             <div className={styles.iniciarSesinChild}/>
             <NavbarLogin/>
-            <div className ={styles.component1}>
-            <div className={styles.correoElectrnico}>Correo Electrónico</div>
-            <input className={styles.component1Child}
-                type="text"
-                placeholder ="estudiante@correo.unimet.edu.ve"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-            />
-            <div className={styles.contrasea}>Contraseña</div>
-            <input className={styles.component1Item}
-                type="password"
-                placeholder="Contraseña"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <button className ={styles.iniciarSesinWrapper}onClick={handleLogin} disabled={loading}>Iniciar sesión</button>
-            <div className={styles.olvidSuContrasea}>¿Olvidó su contraseña?</div>
-            <div className={styles.accesoRpidoCon}>-- Acceso rápido con --</div>
-            <img
-                className={styles.flatColorIconsgoogle}
-                src={Google}
-                onClick={handleGoogleSignIn} disabled={loading}
-            />
-            <img 
-                className={styles.frameIcon} 
-                src={Facebook} 
-                onClick={handleFacebookSignIn} disabled={loading}
-            />
-            {error && <p className="error-message">{error}</p>}
-            {loggedIn && <p className="success-message">¡Has iniciado sesión correctamente!</p>}
+            <div className={styles.component1}>
+                <div className={styles.correoElectrnico}>Correo Electrónico</div>
+                <input className={styles.component1Child}
+                       type="text"
+                       placeholder="estudiante@correo.unimet.edu.ve"
+                       value={username}
+                       onChange={(e) => setUsername(e.target.value)}
+                />
+                <div className={styles.contrasea}>Contraseña</div>
+                <input className={styles.component1Item}
+                       type="password"
+                       placeholder="Contraseña"
+                       value={password}
+                       onChange={(e) => setPassword(e.target.value)}
+                />
+                <button className={styles.iniciarSesinWrapper} onClick={handleLogin} disabled={loading}>Iniciar sesión
+                </button>
+                <div className={styles.olvidSuContrasea} onClick={handleForgotPasswordClick}>¿Olvidó su contraseña?
+                </div>
+                <div className={styles.accesoRpidoCon}>-- Acceso rápido con --</div>
+                <img
+                    className={`${styles.flatColorIconsgoogle} ${styles.iconHover}`}
+                    src={Google}
+                    onClick={handleGoogleSignIn} disabled={loading}
+                />
+                <img
+                    className={`${styles.frameIcon} ${styles.iconHover}`}
+                    src={Facebook}
+                    onClick={handleFacebookSignIn} disabled={loading}
+                />
+                {error && <p className="error-message">{error}</p>}
+                {loggedIn && <p className="success-message">¡Has iniciado sesión correctamente!</p>}
 
             </div>
-                    </div>
+        </div>
     );
 }
 

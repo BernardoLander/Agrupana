@@ -229,4 +229,12 @@
     color: black;
     font-family: Roboto;
   }
+
+  .iconHover {
+    transition: transform 0.3s ease;
+  }
+
+  .iconHover:hover {
+    transform: scale(1.1); /* Enlarge the icon on hover */
+  }
   

@@ -178,12 +178,12 @@ function Registro() {
             <button className={styles.crearCuentaWrapper} onClick={handleSubmit}>Crear Cuenta</button>
             <div className={styles.continuarCon}>-- Continuar con --</div>
             <img
-                className={styles.flatColorIconsgoogle}
+                className={`${styles.flatColorIconsgoogle} ${styles.iconHover}`}
                 src={Google}
                 onClick={handleGoogleSignIn}
             />
             <img
-                className={styles.frameIcon}
+                className={`${styles.frameIcon} ${styles.iconHover}`}
                 src={Facebook}
                 onClick={handleFacebookSignIn}
             />

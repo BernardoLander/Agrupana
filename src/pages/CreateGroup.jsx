@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useNavigate } from 'react-router-dom';
+import styles from './CreateGroup.module.css';
 
 
 const CreateGroup = () => {
@@ -23,11 +24,11 @@ const CreateGroup = () => {
     };
 
     return (
-        <div>
-            <h1>Create Group Page</h1>
+        <div className={styles.container}>
+            <h1 className={styles.title}>Create Group Page</h1>
             <form onSubmit={onSubmit}>
-                <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} placeholder="Nombre" required />
-                <button type="submit">Create Group</button>
+                <input className={styles.inputField} type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} placeholder="Nombre" required />
+                <button className={styles.createButton} type="submit">Create Group</button>
             </form>
         </div>
     );

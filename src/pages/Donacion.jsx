@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom"
+import styles from './Donacion.module.css'
+
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
 const Donacion = () => {
@@ -26,24 +28,23 @@ const Donacion = () => {
     const handleCambio = (e)=> {
         setOpcion(e.target.value)
     }
-            
-        return (
-        <div>
-            <h1>Donacion</h1>
-            <input type="text" placeholder="Con cuanto desea contribuir" value={monto} onChange={handleChange}/>
-            <select value={opcion} onChange={handleCambio}>
+
+    return (
+        <div className={styles.container}>
+            <h1 className={styles.title}>Donacion</h1>
+            <input className={styles.inputField} type="text" placeholder="Con cuanto desea contribuir" value={monto} onChange={handleChange}/>
+            <select className={styles.selectField} value={opcion} onChange={handleCambio}>
                 <option value="1">1$</option>
                 <option value="5">5$</option>
                 <option value="10">10$</option>
                 <option value="20">20$</option>
             </select>
             <PayPalButton
-            createOrder={(data,actions ) => createOrder(monto, actions)}
-            onApprove={(data,actions) => onApprove(data, actions)}
+                createOrder={(data,actions ) => createOrder(monto, actions)}
+                onApprove={(data,actions) => onApprove(data, actions)}
             />
-          
         </div>
-        );
-      }
+    );
+}
 
 export default Donacion

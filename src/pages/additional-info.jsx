@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useUser } from "../context/Usuariocontext";
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from "../firebase";
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
+import styles from './AdditionalInfo.module.css';
 
 const AdditionalInfo = () => {
     const { user } = useUser();
@@ -28,12 +29,12 @@ const AdditionalInfo = () => {
     };
 
     return (
-        <div>
-            <h2>Additional Information</h2>
+        <div className={styles.container}>
+            <h2 className={styles.title}>Additional Information</h2>
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)}/>
-                <input type="text" placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value)}/>
-                <button type="submit">Submit</button>
+                <input className={styles.inputField} type="text" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)}/>
+                <input className={styles.inputField} type="text" placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value)}/>
+                <button className={styles.submitButton} type="submit">Submit</button>
             </form>
         </div>
     );

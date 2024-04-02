@@ -9,7 +9,13 @@
     color: black;
     font-family: Roboto;
   }
-  
+
+.homeButton {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
 
 .perfilDeUsuarioChild {
     position: absolute;
@@ -23,10 +29,13 @@
     background-color: #ff8200;
     border: 3px solid #ffdcb8;
     box-sizing: border-box;
-    font-size:28px;
-    color: white;
+    font-size:20px;
+    color: black;
+    text-align: center;
     cursor: pointer;
   }
+
+
   
   
   .ttulo {

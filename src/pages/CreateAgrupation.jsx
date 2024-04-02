@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { collection, addDoc, getDocs, updateDoc, doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useNavigate } from 'react-router-dom';
+import styles from './CreateAgrupation.module.css';
 
 const CreateAgrupation = () => {
     const [nombre, setNombre] = useState('');
@@ -55,21 +56,21 @@ const CreateAgrupation = () => {
     };
 
     return (
-        <div>
-            <h1>Create Agrupation Page</h1>
+        <div className={styles.container}>
+            <h1 className={styles.title}>Create Agrupation Page</h1>
             <form onSubmit={onSubmit}>
-                <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} placeholder="Nombre" required />
-                <textarea value={somos} onChange={(e) => setSomos(e.target.value)} placeholder="Quienes Somos?" required />
-                <textarea value={pertenecer} onChange={(e) => setPertenecer(e.target.value)} placeholder="Por qué pertenecer?" required />
-                <textarea value={mision} onChange={(e) => setMision(e.target.value)} placeholder="Misión" required />
-                <textarea value={vision} onChange={(e) => setVision(e.target.value)} placeholder="Visión" required />
-                <select value={group} onChange={(e) => setGroup(e.target.value)} required>
+                <input className={styles.inputField} type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} placeholder="Nombre" required />
+                <textarea className={styles.textAreaField} value={somos} onChange={(e) => setSomos(e.target.value)} placeholder="Quienes Somos?" required />
+                <textarea className={styles.textAreaField} value={pertenecer} onChange={(e) => setPertenecer(e.target.value)} placeholder="Por qué pertenecer?" required />
+                <textarea className={styles.textAreaField} value={mision} onChange={(e) => setMision(e.target.value)} placeholder="Misión" required />
+                <textarea className={styles.textAreaField} value={vision} onChange={(e) => setVision(e.target.value)} placeholder="Visión" required />
+                <select className={styles.selectField} value={group} onChange={(e) => setGroup(e.target.value)} required>
                     <option value="">Select a group</option>
                     {groups.map((group) => (
                         <option key={group.id} value={group.id}>{group.nombre}</option>
                     ))}
                 </select>
-                <button type="submit">Create Agrupation</button>
+                <button className={styles.createButton} type="submit">Create Agrupation</button>
             </form>
         </div>
     );
