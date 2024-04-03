@@ -74,6 +74,9 @@ const PerfilUsuario = () => {
         navigate('/');
     };
 
+    const handleForgotPasswordClick = () => {
+        navigate('/recuperar');
+    };
 
 
     return (
@@ -107,7 +110,7 @@ const PerfilUsuario = () => {
             <input className={styles.perfilDeUsuarioChild2} type="email" value={email} disabled/>
 
             <button className={styles.guardarCambiosWrapper} onClick={handleUpdateProfile}>Guardar Cambios</button>
-            <div className={styles.cambiarContrasea}>Cambiar Contraseña</div>
+            <div className={styles.cambiarContrasea} onClick={handleForgotPasswordClick}>Cambiar Contraseña</div>
             <div className={styles.perfilDeUsuarioChild}>
 
                 <div className={styles.perfilDeUsuarioChild}>
